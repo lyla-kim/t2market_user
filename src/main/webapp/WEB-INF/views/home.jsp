@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page session="false" %>
 <html>
 <head>
@@ -11,28 +11,7 @@
 </style>
 <body>
 
-			<div id="header__menu__fix" class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul class="header__menu__list">
-                            <li><a href="/shop-grid.do">신상품</a></li>
-                            <li><a href="/shop-grid.do">추천상품</a></li>
-                        </ul>
-                        <div class="hero__search">
-	                        <div class="hero__search__form">
-	                            <form action="#">
-	                                <div class="hero__search__categories">
-	                                    상품명 검색                                    
-	                                </div>
-	                                <input type="text" placeholder="찾으시는 제품명을 입력해주세요">
-	                                <button type="submit" class="site-btn">검색</button>
-	                            </form>
-	                        </div>
-                   		</div>
-                   		<ul>
-                   			<li><a href="#" style="font-size:43; margin-left:15px"><i class="fa fa-shopping-bag"></i> </a></li>
-                   		</ul>
-                    </nav>
-                </div>
+	
 
     <!-- Page Preloder -->
     <div id="preloder">
