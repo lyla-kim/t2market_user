@@ -4,12 +4,22 @@
 <html>
 <head>
 	<title>ProjEx</title>
-	
+	<%@ include file="./includes/user_header.jsp" %>
 </head>
 <style>
 .hero__categories ul li a {line-height:36px;}
+.container #header__menu__fix { flex: 0 0 75%; max-width: 100%; }
+
+.header__menu { display: flex; align-items: center; }
+.header__menu .header__menu__list { float: left; margin-right: 23px; }
+.header__menu .hero__search { margin-bottom: 0px; }
+.header__menu .hero__search .hero__search__form { width: 523px; }
+.header__menu .hero__search .hero__search__categories { width: 24%; }
 </style>
+
 <body>
+
+
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -134,7 +144,7 @@
    
     <!-- Footer Section End -->
     
-    
+    <%@ include file="./includes/footer.jsp" %>
     
 </body>
 </html>
