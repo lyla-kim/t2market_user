@@ -1,14 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page session="false" %>
 <html>
 <head>
 	<title>ProjEx</title>
+	<%@ include file="./includes/user_header.jsp" %>
 </head>
+
+<!--이민경 짱짱 -->
 <style>
 .hero__categories ul li a {line-height:36px;}
 </style>
 <body>
+
+	
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -127,12 +132,15 @@
             </div>
         </div>
     </section>
+    
+    
     <!-- Categories Section End -->
  
     <!-- Footer Section Begin -->
    
     <!-- Footer Section End -->
     
+    <%@ include file="./includes/footer.jsp" %>
     
 </body>
 </html>
