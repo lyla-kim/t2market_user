@@ -7,7 +7,7 @@
 	<%@ include file="./includes/user_header.jsp" %>
 </head>
 
-<!-- 김수현짱 -->
+<!-- 짱짱 -->
 <style>
 .hero__categories ul li a {line-height:36px;}
 </style>
