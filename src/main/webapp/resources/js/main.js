@@ -17,14 +17,6 @@
     $(window).on('load', function () {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
-		
-
-		let iii = 0;		
-
-        let asc = 0;
-	let asc = 0;
-	let asc = 0;
-
         /*------------------
             Gallery filter
         --------------------*/
