@@ -18,6 +18,12 @@
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
 
+
+	let bcd = 53;
+	let bscd = 53;
+	let abcd = 53;
+	
+	
         /*------------------
             Gallery filter
         --------------------*/
