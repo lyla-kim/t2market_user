@@ -17,6 +17,12 @@
     $(window).on('load', function () {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
+        let abc = 0;
+
+
+
+
+
 
         /*------------------
             Gallery filter
