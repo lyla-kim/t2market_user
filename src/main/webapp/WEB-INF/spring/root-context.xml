@@ -42,6 +42,9 @@
 	
 	<mybatis-spring:scan base-package="kr.co.T2Market"/>
 	
-	<context:component-scan base-package="kr.co.T2Market.qna.service"></context:component-scan>
-		
+	<context:component-scan base-package="kr.co.T2Market"></context:component-scan>
+	
+	
+	
+	<task:annotation-driven/>
 </beans>
