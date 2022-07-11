@@ -1,9 +1,12 @@
-package kr.co.T2Market.product.mapper;
+package kr.co.T2Market.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import kr.co.T2Market.product.domain.ProductVO;
 
+@Mapper
 public interface ProductMapper {
 
 	//@Select("select * from product")

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import kr.co.T2Market.mapper.ProductMapper;
 import kr.co.T2Market.product.domain.ProductVO;
-import kr.co.T2Market.product.mapper.ProductMapper;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 

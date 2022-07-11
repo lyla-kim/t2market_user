@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ProductServiceTests {
 
-	@Setter(onMethod_ = {@Autowired})
+	@Autowired
 	private ProductService service;
 	
 	@Test
