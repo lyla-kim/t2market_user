@@ -21,9 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.co.T2Market" />
+	<context:component-scan base-package="org.movie.controller" />
 	
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
-	</beans:bean>
+	
 	
 </beans:beans>
