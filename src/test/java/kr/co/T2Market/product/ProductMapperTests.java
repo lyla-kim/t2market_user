@@ -1,11 +1,14 @@
 package kr.co.T2Market.product;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import kr.co.T2Market.domain.Criteria;
 import kr.co.T2Market.domain.ProductVO;
 import kr.co.T2Market.mapper.ProductMapper;
 import lombok.Setter;
@@ -61,27 +64,40 @@ public class ProductMapperTests {
 //		log.info("DELETE COUNT : " + mapper.delete("1"));
 //	}
 	
+//	@Test
+//	public void testUpdate() {
+//		
+//		ProductVO product = new ProductVO();
+//		
+//		product.setProduct_no("111");
+//		product.setCode1("10000");
+//		product.setCode2("10100");
+//		product.setExplain("상품설명Test2");
+//		product.setName("상품이름");
+//		product.setDiscount(20);
+//		product.setSell_price(200);
+//		product.setReal_price(300);
+//		product.setTotal_output(300);
+//		product.setTotal_sales(300);
+//		product.setInput(30);
+//		product.setStock(30);
+//		product.setActive("N");
+//		
+//		int count = mapper.update(product);
+//		log.info("Update Count : " + count);
+//		
+//	}
+	
 	@Test
-	public void testUpdate() {
+	public void testPaging() {
 		
-		ProductVO product = new ProductVO();
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+		cri.setAmount(10);
 		
-		product.setProduct_no("111");
-		product.setCode1("10000");
-		product.setCode2("10100");
-		product.setExplain("상품설명Test2");
-		product.setName("상품이름");
-		product.setDiscount(20);
-		product.setSell_price(200);
-		product.setReal_price(300);
-		product.setTotal_output(300);
-		product.setTotal_sales(300);
-		product.setInput(30);
-		product.setStock(30);
-		product.setActive("N");
+		List<ProductVO> list = mapper.getListPaging(cri);
 		
-		int count = mapper.update(product);
-		log.info("Update Count : " + count);
+		list.forEach(product -> log.info(product));
 		
 	}
 }

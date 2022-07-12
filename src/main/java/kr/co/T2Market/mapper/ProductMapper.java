@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.T2Market.domain.Criteria;
 import kr.co.T2Market.domain.ProductVO;
 
-@Mapper
+
 public interface ProductMapper {
 
 	//@Select("select * from product")
@@ -21,4 +22,7 @@ public interface ProductMapper {
 	public int delete(String product_no);
 	
 	public int update(ProductVO board);
+	
+	//게시판 목록(페이징 적용)
+	public List<ProductVO> getListPaging(Criteria cri);
 }

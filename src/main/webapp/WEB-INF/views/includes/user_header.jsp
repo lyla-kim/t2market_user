@@ -95,15 +95,28 @@
                     </nav>
                 </div>
                 
-                 <div class="col-lg-3">
-                <div id="wrap align-self-stretch">
-  <form action="" autocomplete="on">
-  <input id="search" name="search" type="text" placeholder="찾으시는 제품명을 입력해주세요"><input id="search_submit" value="Rechercher" type="submit">
-  </form>
-</div>
-
+             	<div class="col-lg-3">
+                	<div id="wrap align-self-stretch">
+  						<form id="searchFrom" action="product/product" method="get" autocomplete="on">
+  							<input id="search" name="search" type="text" placeholder="찾으시는 제품명을 입력해주세요"><input id="search_submit" value="Rechercher" type="submit">
+  							<button class='btn btn-default'>search</button>
+  						</form>
+					</div>
                 </div>
-               
+			<script type="text/javascript">
+			$(document).ready(function() {
+                var searchForm = $("#searchForm");
+
+				$("#searchForm button").on("click", function(e) {
+
+			
+					searchForm.find("input[name='pageNum']").val("1");
+					e.preventDefault();
+
+					searchForm.submit();
+				});
+			});
+			</script>               
                 
 </div>
 </div>

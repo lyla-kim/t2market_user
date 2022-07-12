@@ -3,8 +3,51 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace = "kr.co.T2Market.mapper.ProductMapper">
-  
-  <select id="getList" resultType="kr.co.T2Market.product.domain.ProductVO">
+ 
+ 	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>					
+						<when test="type=='C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>	
+						<when test="type=='W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>								
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+     
+     <!-- Oracle -->
+    <!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" resultType="kr.co.T2Market.domain.ProductVO">
+    
+    <![CDATA[
+        
+        select * from(
+         select /*+INDEX_DESC(product pk_product) */
+			        rownum rn, product_no, name, code2, code1, explain 
+			      from 
+			        product
+			      where 
+		 ]]>  
+			      
+			<include refid="criteria"></include>
+			
+		<![CDATA[	      
+			      rownum <= #{pageNum} * #{amount}
+			   )
+			 where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
+ 
+  <select id="getList" resultType="kr.co.T2Market.domain.ProductVO">
   <![CDATA[
   select * from product
   ]]>
@@ -15,7 +58,7 @@
   	values(#{product_no},#{code1},#{code2},#{explain},#{name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
   </insert>
   
-  <select id="read" resultType="kr.co.T2Market.product.domain.ProductVO">
+  <select id="read" resultType="kr.co.T2Market.domain.ProductVO">
   	select * from product where product_no = #{product_no}
   </select>
   

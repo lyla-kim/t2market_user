@@ -17,14 +17,23 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ProductServiceTests {
 
-	@Autowired
+	@Setter(onMethod_ = @Autowired)
 	private ProductService service;
 	
-	@Test
-	public void testExist() {
-		
-		log.info(service);
-		assertNotNull(service);
-	}
+//	@Test
+//	public void testExist() {
+//		
+//		log.info(service);
+//		assertNotNull(service);
+//	}
 	
+//	@Test
+//	public void testGetList() {
+//		service.getList().forEach(product -> log.info(product));
+//	}
+	
+	@Test
+	public void testGet() {
+		log.info(service.get("11"));
+	}
 }

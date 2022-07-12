@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.T2Market.domain.Criteria;
 import kr.co.T2Market.domain.ProductVO;
 import kr.co.T2Market.mapper.ProductMapper;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductVO get(String product_no) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		log.info("get........." + product_no);
+		
+		return mapper.read(product_no);
 	}
 
 	@Override
@@ -42,10 +46,20 @@ public class ProductServiceImpl implements ProductService {
 		return false;
 	}
 
+//	@Override
+//	public List<ProductVO> getList() {
+//		// TODO Auto-generated method stub
+//		
+//		log.info("getlist........");
+//		return mapper.getList();
+//	}
+	
 	@Override
-	public List<ProductVO> getList() {
-		// TODO Auto-generated method stub
-		return mapper.getList();
+	public List<ProductVO> getList(Criteria cri) {
+		
+		log.info("get List with criteria : " + cri);
+		
+		return mapper.getListPaging(cri);
 	}
 
 }

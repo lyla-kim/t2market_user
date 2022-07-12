@@ -29,7 +29,7 @@ public class productdetailController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "product/productdetail";
+		return null;
 	}
 	
 }
