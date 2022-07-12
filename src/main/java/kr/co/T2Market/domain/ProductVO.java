@@ -1,4 +1,4 @@
-package kr.co.T2Market.product.domain;
+package kr.co.T2Market.domain;
 
 import java.util.Date;
 

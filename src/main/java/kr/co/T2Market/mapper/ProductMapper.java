@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import kr.co.T2Market.product.domain.ProductVO;
+import kr.co.T2Market.domain.ProductVO;
 
 @Mapper
 public interface ProductMapper {

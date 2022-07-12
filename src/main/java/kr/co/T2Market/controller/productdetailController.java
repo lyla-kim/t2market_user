@@ -1,4 +1,4 @@
-package kr.co.T2Market.product.controller;
+package kr.co.T2Market.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import kr.co.T2Market.board.controller.HomeController;
 
 @Controller
 public class productdetailController {

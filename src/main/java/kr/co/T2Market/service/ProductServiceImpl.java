@@ -1,12 +1,12 @@
-package kr.co.T2Market.product.service;
+package kr.co.T2Market.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.T2Market.domain.ProductVO;
 import kr.co.T2Market.mapper.ProductMapper;
-import kr.co.T2Market.product.domain.ProductVO;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;

@@ -24,4 +24,6 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</beans:bean>
 	
+	<context:component-scan base-package="kr.co.T2Market.controller"></context:component-scan>
+	
 </beans:beans>

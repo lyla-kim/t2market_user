@@ -1,8 +1,8 @@
-package kr.co.T2Market.product.service;
+package kr.co.T2Market.service;
 
 import java.util.List;
 
-import kr.co.T2Market.product.domain.ProductVO;
+import kr.co.T2Market.domain.ProductVO;
 
 public interface ProductService {
 	

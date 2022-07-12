@@ -18,11 +18,6 @@
 </style>
 <body>
 
-	<script type="text/javascript">
-		var list = #{data}
-		console.log(list)
-	</script>
-
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
