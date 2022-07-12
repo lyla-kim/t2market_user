@@ -12,7 +12,6 @@
 <script src="/resources/js/main.js"></script>
 
 
-
    <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -42,8 +41,6 @@
                    	 <br>
                     	<br>
                     		<br>
-                    			<br>
-                    				<br>
                     					<br>
                         <h6>Useful Links</h6>
                         <ul>
