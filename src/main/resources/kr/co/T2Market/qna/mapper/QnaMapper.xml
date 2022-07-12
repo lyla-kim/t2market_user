@@ -41,4 +41,6 @@
 		where qna_no = #{qna_no}
 	</update>
 	
+	
+	
 </mapper>

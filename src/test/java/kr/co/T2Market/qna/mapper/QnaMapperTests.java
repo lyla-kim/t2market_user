@@ -49,7 +49,7 @@ public class QnaMapperTests {
 	public void testUpdate() {
 		QnaVO qna = new QnaVO();
 		
-		qna.setQna_no("8");
+		qna.setQna_no("9");
 		qna.setTitle("수정된 제목");
 		qna.setContent("수정된 내용");
 		

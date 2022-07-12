@@ -3,9 +3,9 @@ package kr.co.T2Market.qna.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import kr.co.T2Market.qna.domain.QnaVO;
 import kr.co.T2Market.qna.mapper.QnaMapper;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -18,32 +18,33 @@ public class QnaServiceImpl implements QnaService {
 	
 	@Override
 	public void register(QnaVO qna) {
-		// TODO Auto-generated method stub
+		
+		mapper.insertSelectKey(qna);
 
 	}
 
 	@Override
 	public QnaVO get(String qna_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.read(qna_no);
 	}
 
 	@Override
 	public boolean modify(QnaVO qna) {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.update(qna) == 1;
 	}
 
 	@Override
 	public boolean remove(String qna_no) {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.delete(qna_no) == 1;
 	}
 
 	@Override
 	public List<QnaVO> getList() {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.getList();
 	}
 
 }
