@@ -13,7 +13,7 @@
 <body class="bg-white">
 		<div class="row bg-white">
 			<div class="col-lg-12">
-				<h2 align="center" class="page-header">QNA 조회</h2>
+				<h2 align="center" class="page-header">QNA 수정</h2>
 				
 			</div>
 			<!-- /col-lg-12 -->
@@ -24,7 +24,12 @@
 				<div class="panel panel-default">
 
 					<!-- /panel-heading -->
-					<div class="m-5">				
+					<div class="m-5">
+							
+							<form role="form" action="/qna/modify" method="post">
+							
+							<input type="hidden" name='pageNum' value='<c:out value="${cri.pageNum }"/>'/>
+           					<input type="hidden" name='amount' value='<c:out value="${cri.amount }"/>'/>
 							
 							<div class="form-group">
 								<label>글번호</label> 
@@ -33,7 +38,7 @@
 						
 							<div class="form-group">
 								<label>제목</label> 
-								<input class="form-control" name='title' value='<c:out value="${qna.title }"/>' readonly="readonly">
+								<input class="form-control" name='title' value='<c:out value="${qna.title }"/>'>
 							</div>
 
 							<div class="form-group">
@@ -43,16 +48,16 @@
 
 							<div class="mb-3">
 								<label class="form-label">내용</label>
-								<textarea class="form-control" name='content' rows="8" readonly="readonly"><c:out value="${qna.content }" /> </textarea>	
+								<textarea class="form-control" name='content' rows="8"><c:out value="${qna.content }" /> </textarea>	
 							</div>
 							
 							<br>
 							<div class="mx-auto" align="right">
-								<button data-oper='modify' class="btn btn-outline-success">수정</button>
+								<button data-oper='modify' class="btn btn-outline-success">수정완료</button>
+								<button data-oper='remove' class="btn btn-outline-danger">삭제</button>
 								<button data-oper='list' class="btn btn-outline-secondary">목록</button>
 							</div>
-							<form id='operForm' action="/qna/modify" method="get">
-								<input type='hidden' id='qna_no' name='qna_no' value='<c:out value="${qna.qna_no }"/>'>
+							
 							<br>
 							</form>
 							</div>
@@ -60,36 +65,36 @@
 					</div>
 				</div>
 			</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				var formObj = $("form");
 			
-					         <form id="operForm" action="/qna/modify" method="get">
-		         	<input type="hidden" id="qna_no" name="qna_no" value='<c:out value="${qna.qna_no }"/>'>
-		         	<input type="hidden" id="pageNum" name="pageNum" value='<c:out value="${cri.pageNum }"/>'>
-		         	<input type="hidden" id="amount" name="amount" value='<c:out value="${cri.amount }"/>'>
-							</form>
+				$('button').on("click", function(e){
+					
+					e.preventDefault();
+					
+					var operation = $(this).data("oper");
+					
+					if(operation === 'remove') {
+						formObj.attr("action", "/qna/remove");
+					}else if(operation === 'list') {
 							
-	<script type="text/javascript">
-	$(document).ready(function(){
-		
-		var operForm = $("#operForm");
-		
-		$("button[data-oper='modify']").on("click", function(e){
+						formObj.attr("action", "/qna/list").attr("method", "get");
+						var pageNumTag = $("input[name='pageNum']").clone();
+		 				var amountTag = $("input[name='amount']").clone();
+						
+						formObj.empty();
+						formObj.append(pageNumTag);
+		 				formObj.append(amountTag);
+					}
+					formObj.submit();
+				});
+			});
 			
-			operForm.attr("action", "/qna/modify").submit();
-			
-		});
 		
-		$("button[data-oper='list']").on("click", function(e){
-			
-			operForm.find("#qna_no").remove();
-			operForm.attr("action", "/qna/list")
-			operForm.submit();
-			
-		});
-		
-	});
-	
-	</script>
-
+		</script>
 
 
 </body>

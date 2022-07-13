@@ -41,6 +41,24 @@
 		where qna_no = #{qna_no}
 	</update>
 	
+	<select id="getListWithPaging" resultType="kr.co.T2Market.domain.QnaVO">
+		<![CDATA[
+			select
+				qna_no, title, content, member_id, regdate, updatedate
+				
+				from
+					(
+					select rownum rn, qna_no, title, content, member_id, regdate, updatedate
+					from qna_user
+					where rownum <= #{pageNum} * #{amount}
+					)
+					where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from qna_user where qna_no > 0
+	</select>
 	
 	
 </mapper>

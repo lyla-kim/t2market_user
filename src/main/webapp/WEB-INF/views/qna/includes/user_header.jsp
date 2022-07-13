@@ -48,7 +48,7 @@
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
                                     <li><a href="#">공지사항</a></li>
-                                    
+                                    <li><a href="/qna/list">1:1상담</a></li>
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">

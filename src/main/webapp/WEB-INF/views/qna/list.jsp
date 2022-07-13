@@ -43,19 +43,52 @@
 						<c:forEach items="${list }" var="qna">
 							<tr>
 								<td><c:out value="${qna.qna_no }" /></td>
-								<td><c:out value="${qna.title }" /></td>
+								<td><a class='move' href='<c:out value="${qna.qna_no }"/>'>
+								<c:out value="${qna.title }" /></a></td>
 								<td><c:out value="${qna.member_id }" /></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd"
-										value="${qna.regdate }" /></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd"
-										value="${qna.updatedate }" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qna.regdate }" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qna.updatedate }" /></td>
 							</tr>
 						</c:forEach>
+						
+						
+						
 					</tbody>
 
 
 				</table>
+				<br>
+				<div class='pull-right'>
 				
+							<ul class="pagination">
+							
+								<c:if test="${pageMaker.prev}">
+				              		<li class="paginate_button previous">
+				              			<a class="page-link" href="${pageMaker.startPage -1}">이전</a>
+				              		</li>
+				            	</c:if>
+				
+					            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					              	<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}">
+					              	<a class="page-link" href="${num}">${num}</a>
+					              	</li>
+					            </c:forEach>
+				
+					            <c:if test="${pageMaker.next}">
+					              	<li class="paginate_button next">
+					              		<a class="page-link" href="${pageMaker.endPage +1 }">다음</a>
+					              	</li>
+					            </c:if>
+					            
+					  		</ul>
+					  </div>
+					 
+					  
+					  <form id='actionForm' action="/qna/list" method='get'>
+						<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+						<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+					</form>
+					
 				<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -79,6 +112,9 @@
 
 			</div>
 
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
@@ -107,6 +143,26 @@
 		
 		$("#regBtn").on("click", function(){
 			self.location = "/qna/register";
+		});
+		
+		var actionForm = $("#actionForm");
+
+		$(".paginate_button a").on("click", function(e) {
+			
+			e.preventDefault();
+			console.log('click');
+
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionForm.submit();
+		});
+		
+		$(".move").on("click", function(e) {
+
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='qna_no' value='"	+ $(this).attr("href") + "'>");
+			actionForm.attr("action", "/qna/get");
+			actionForm.submit();
+
 		});
 		
 	});

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.T2Market.domain.QnaCriteria;
 import kr.co.T2Market.domain.QnaVO;
 import kr.co.T2Market.mapper.QnaMapper;
 import lombok.AllArgsConstructor;
@@ -41,10 +42,23 @@ public class QnaServiceImpl implements QnaService {
 		return mapper.delete(qna_no) == 1;
 	}
 
+//	@Override
+//	public List<QnaVO> getList() {
+//		// TODO Auto-generated method stub
+//		return mapper.getList();
+//	}
+	
 	@Override
-	public List<QnaVO> getList() {
-		// TODO Auto-generated method stub
-		return mapper.getList();
+	public List<QnaVO> getList(QnaCriteria cri) {
+		
+		return mapper.getListWithPaging(cri);
+		
+	}
+	
+	@Override
+	public int getTotal(QnaCriteria cri) {
+		
+		return mapper.getTotalCount(cri);
 	}
 
 }
