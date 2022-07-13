@@ -4,45 +4,47 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace = "kr.co.T2Market.mapper.ProductMapper">
  
- 	<sql id="criteria">
+	<sql id="criteria">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 			<foreach item="type" collection="typeArr">
 				<trim prefix="OR">
 					<choose>
 						<when test="type=='T'.toString()">
-							name like '%'||#{keyword}||'%'
-						</when>														
+							title name '%'||#{keyword}||'%'
+						</when>					
+						<when test="type=='C'.toString()">
+							content code1 '%'||#{keyword}||'%'
+						</when>	
+						<when test="type=='W'.toString()">
+							writer code2 '%'||#{keyword}||'%'
+						</when>								
 					</choose>
 				</trim>
 			</foreach>
 		</trim>
 	</sql>
-     
-     <!-- Oracle -->
-    <!-- 게시물 목록(페이징) -->
-    <select id="getListPaging" resultType="kr.co.T2Market.domain.ProductVO">
-     
-    <![CDATA[
-        
-        select * from(
-        
-                select /*+INDEX_DESC(product pk_product) */ rownum  as rn, product_no, name, code1, code2, explain, updatedate
-                  
-                from product where product_no <= #{pageNum} * #{amount} 
-    ]]>            
-                <if test="keyword != null">
-                    and name like '%'||#{keyword}||'%' 
-                </if>
-    
-    <![CDATA[
-                    
-                )
-                    
-        where rn > (#{pageNum} -1) * #{amount}
-    
-    ]]>
-    
-    </select>
+	
+	<select id="getListPaging" resultType="kr.co.T2Market.domain.ProductVO">
+		<![CDATA[
+			select 
+			    *
+		    from 
+		      (
+			      select /*+INDEX_DESC(product pk_product) */
+			        rownum rn, product_no, name, code1, code2, explain, regdate, active 
+			      from 
+			        product
+			      where 
+		 ]]>  
+			      
+			<include refid="criteria"></include>
+			
+		<![CDATA[	      
+			      rownum <= #{pageNum} * #{amount}
+			   )
+			 where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
     
         <!-- 게시물 총 개숫 -->
     <select id="getTotal" resultType="int">
@@ -69,7 +71,7 @@
   </insert>
   
   <select id="getPage" resultType="kr.co.T2Market.domain.ProductVO">
-  	select product_no, name, explain, code1, code2 from product where name = #{name}
+  	select product_no, name, explain, code1, code2 from product where product_no = #{product_no}
   </select>
   
 

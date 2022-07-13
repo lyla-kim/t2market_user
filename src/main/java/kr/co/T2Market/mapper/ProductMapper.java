@@ -14,7 +14,7 @@ public interface ProductMapper {
 	public List<ProductVO> getList();
 
 	//게시판 조회
-	public ProductVO getPage(String name);
+	public ProductVO getPage(String product_no);
 	
 	public ProductVO read(String product_no);
 	

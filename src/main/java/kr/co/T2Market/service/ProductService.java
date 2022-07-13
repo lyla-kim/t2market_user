@@ -11,11 +11,10 @@ public interface ProductService {
 	
 	public ProductVO get(String product_no);
 	
-	public ProductVO getPage(String name);
+	public ProductVO getPage(String product_no);
 	
 	// public List<ProductVO> getList();
-	
-	public List<ProductVO> getList();
+		
 	
 	public List<ProductVO> getListPaging(Criteria cri);
 	

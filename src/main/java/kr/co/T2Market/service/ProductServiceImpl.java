@@ -34,13 +34,13 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.read(product_no);
 	}
 
-	@Override
-	public List<ProductVO> getList() {
-		// TODO Auto-generated method stub
-		
-		log.info("getlist........");
-		return mapper.getList();
-	}
+//	@Override
+//	public List<ProductVO> getList() {
+//		// TODO Auto-generated method stub
+//		
+//		log.info("getlist........");
+//		return mapper.getList();
+//	}
 	
 //	@Override
 //	public ProductVO getPage(String name) {
@@ -63,9 +63,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductVO getPage(String name) {
+	public ProductVO getPage(String product_no) {
 		// TODO Auto-generated method stub
-		return mapper.getPage(name);
+		return mapper.getPage(product_no);
 	}
 
 }

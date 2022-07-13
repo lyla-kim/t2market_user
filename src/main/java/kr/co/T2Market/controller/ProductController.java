@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.T2Market.domain.Criteria;
-import kr.co.T2Market.domain.PageMaker;
+
 import kr.co.T2Market.domain.pageDTO;
 import kr.co.T2Market.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -31,17 +31,23 @@ public class ProductController {
 	 */
 	
 	@GetMapping("/list")
-	public void productList(Model model) {
+	public void productList(Criteria cri, Model model) {
 		
 		log.info("게시판 목록 페이지 진입");
 		
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.getListPaging(cri));
+//		model.addAttribute("pageMaker", new pageDTO(cri, 123));
+		
+		int total = service.getTotal(cri);
+		log.info("total : " + total);
+		model.addAttribute("pageMaker", new pageDTO(cri,total));
+		
 	}
 	
 	@GetMapping("/get")
-	public void boardGetPageGet(String name, Model model) {
+	public void boardGetPageGet(String product_no, Model model) {
 		
-		model.addAttribute("pageInfo", service.getPage(name));
+		model.addAttribute("pageInfo", service.getPage(product_no));
 	}
 	
 
