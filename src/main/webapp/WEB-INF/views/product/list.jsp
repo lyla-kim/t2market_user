@@ -52,22 +52,23 @@
       <input  type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
       <input  type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
       <input  type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
+      <input  type='hidden' name='type' value='T' />
       <button class='btn btn-default'>Search</button>
    </form>
 
 					 <div class='pull-right'>
 							<ul class="pagination">
 								<c:if test="${pageMaker.prev}">
-				              		<li class="paginate_button previous"><a href="/product/list?pageNum=${pageMaker.startPage -1}&amount=10">Previous</a>
+				              		<li class="paginate_button previous"><a href="/product/list?pageNum=${pageMaker.startPage -1}&amount=${pageMaker.cri.amount}">Previous</a>
 				              		</li>
 				            	</c:if>
 				
 					            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					              	<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}"><a href="/product/list?pageNum=${num}&amount=10">${num}</a></li>
+					              	<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}"><a href="/product/list?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword }&pageNum=${num}&amount=${pageMaker.cri.amount}">${num}</a></li>
 					            </c:forEach>
 				
 					            <c:if test="${pageMaker.next}">
-					              	<li class="paginate_button next"><a href="/product/list?pageNum=${pageMaker.endPage +1 }&amount=20">Next</a></li>
+					              	<li class="paginate_button next"><a href="/product/list?pageNum=${pageMaker.endPage +1 }&amount=${pageMaker.cri.amount}">Next</a></li>
 					            </c:if>
 					  		</ul>
 					  </div>
