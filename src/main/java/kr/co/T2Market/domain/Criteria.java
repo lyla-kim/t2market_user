@@ -29,4 +29,13 @@ public class Criteria {
 		
 		return type == null? new String [] {}: type.split("");
 	}
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+		
 }

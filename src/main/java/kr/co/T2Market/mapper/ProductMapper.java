@@ -12,17 +12,16 @@ public interface ProductMapper {
 
 	//@Select("select * from product")
 	public List<ProductVO> getList();
-	
-	public void insert(ProductVO product);
-	
-	public void insertSelectKey(ProductVO product);
+
+	//게시판 조회
+	public ProductVO getPage(String name);
 	
 	public ProductVO read(String product_no);
 	
-	public int delete(String product_no);
-	
-	public int update(ProductVO board);
-	
 	//게시판 목록(페이징 적용)
 	public List<ProductVO> getListPaging(Criteria cri);
+	
+	public int getTotal(Criteria cri);
+	
+	public List<ProductVO> list(Criteria cri) throws Exception;
 }

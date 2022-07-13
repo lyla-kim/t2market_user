@@ -11,11 +11,13 @@ public interface ProductService {
 	
 	public ProductVO get(String product_no);
 	
-	public boolean modify(ProductVO product);
-	
-	public boolean remove(String product_no);
+	public ProductVO getPage(String name);
 	
 	// public List<ProductVO> getList();
 	
-	public List<ProductVO> getList(Criteria cri);
+	public List<ProductVO> getList();
+	
+	public List<ProductVO> getListPaging(Criteria cri);
+	
+	public int getTotal(Criteria cri);
 }

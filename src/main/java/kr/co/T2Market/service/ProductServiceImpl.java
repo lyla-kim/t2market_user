@@ -35,31 +35,37 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public boolean modify(ProductVO product) {
+	public List<ProductVO> getList() {
 		// TODO Auto-generated method stub
-		return false;
+		
+		log.info("getlist........");
+		return mapper.getList();
 	}
-
-	@Override
-	public boolean remove(String product_no) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 //	@Override
-//	public List<ProductVO> getList() {
-//		// TODO Auto-generated method stub
+//	public ProductVO getPage(String name) {
 //		
-//		log.info("getlist........");
-//		return mapper.getList();
+//		return mapper.getPage(name);
 //	}
 	
+	
 	@Override
-	public List<ProductVO> getList(Criteria cri) {
+	public List<ProductVO> getListPaging(Criteria cri) {
 		
 		log.info("get List with criteria : " + cri);
 		
 		return mapper.getListPaging(cri);
+	}
+	
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotal(cri);
+	}
+
+	@Override
+	public ProductVO getPage(String name) {
+		// TODO Auto-generated method stub
+		return mapper.getPage(name);
 	}
 
 }

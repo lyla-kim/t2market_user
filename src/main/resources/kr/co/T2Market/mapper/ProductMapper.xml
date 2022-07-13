@@ -10,14 +10,8 @@
 				<trim prefix="OR">
 					<choose>
 						<when test="type=='T'.toString()">
-							title like '%'||#{keyword}||'%'
-						</when>					
-						<when test="type=='C'.toString()">
-							content like '%'||#{keyword}||'%'
-						</when>	
-						<when test="type=='W'.toString()">
-							writer like '%'||#{keyword}||'%'
-						</when>								
+							name like '%'||#{keyword}||'%'
+						</when>														
 					</choose>
 				</trim>
 			</foreach>
@@ -27,25 +21,41 @@
      <!-- Oracle -->
     <!-- 게시물 목록(페이징) -->
     <select id="getListPaging" resultType="kr.co.T2Market.domain.ProductVO">
-    
+     
     <![CDATA[
         
         select * from(
-         select /*+INDEX_DESC(product pk_product) */
-			        rownum rn, product_no, name, code2, code1, explain 
-			      from 
-			        product
-			      where 
-		 ]]>  
-			      
-			<include refid="criteria"></include>
-			
-		<![CDATA[	      
-			      rownum <= #{pageNum} * #{amount}
-			   )
-			 where rn > (#{pageNum} -1) * #{amount}
-		]]>
-	</select>
+        
+                select /*+INDEX_DESC(product pk_product) */ rownum  as rn, product_no, name, code1, code2, explain, updatedate
+                  
+                from product where product_no <= #{pageNum} * #{amount} 
+    ]]>            
+                <if test="keyword != null">
+                    and name like '%'||#{keyword}||'%' 
+                </if>
+    
+    <![CDATA[
+                    
+                )
+                    
+        where rn > (#{pageNum} -1) * #{amount}
+    
+    ]]>
+    
+    </select>
+    
+        <!-- 게시물 총 개숫 -->
+    <select id="getTotal" resultType="int">
+    
+        select count(*) from product
+        
+        <if test="keyword != null">        
+            <!-- Oracle -->
+            where name like '%'||#{keyword}||'%'
+            
+        </if>
+    
+    </select>
  
   <select id="getList" resultType="kr.co.T2Market.domain.ProductVO">
   <![CDATA[
@@ -58,30 +68,9 @@
   	values(#{product_no},#{code1},#{code2},#{explain},#{name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
   </insert>
   
-  <select id="read" resultType="kr.co.T2Market.domain.ProductVO">
-  	select * from product where product_no = #{product_no}
+  <select id="getPage" resultType="kr.co.T2Market.domain.ProductVO">
+  	select product_no, name, explain, code1, code2 from product where name = #{name}
   </select>
   
-  <delete id="delete">
-  	delete from product where product_no = #{product_no}
-  </delete>
-  
-  <update id="update">
-  	update product
-  	set product_no= #{product_no},
-  	code1=#{code1},
-  	code2=#{code2},
-  	explain=#{explain},
-  	name=#{name},
-  	sell_price=#{sell_price},
-  	real_price=#{real_price},
-  	total_output=#{total_output},
-  	total_sales=#{total_sales},
-  	input=#{input},
-  	stock=#{stock},
-  	updatedate=sysdate, 
-  	active=#{active}
-  	where product_no=#{product_no}
-  </update>
 
   </mapper>

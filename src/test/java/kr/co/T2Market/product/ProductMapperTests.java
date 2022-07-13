@@ -91,13 +91,9 @@ public class ProductMapperTests {
 	@Test
 	public void testPaging() {
 		
-		Criteria cri = new Criteria();
-		cri.setPageNum(1);
-		cri.setAmount(10);
+		String name = "상품1";
 		
-		List<ProductVO> list = mapper.getListPaging(cri);
-		
-		list.forEach(product -> log.info(product));
+		log.info("" + mapper.getPage(name));
 		
 	}
 }
