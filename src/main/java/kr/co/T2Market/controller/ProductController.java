@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.T2Market.domain.Criteria;
-
 import kr.co.T2Market.domain.pageDTO;
 import kr.co.T2Market.service.ProductService;
 import lombok.AllArgsConstructor;
