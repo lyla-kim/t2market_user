@@ -1,4 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
@@ -94,18 +96,22 @@
                         </ul>
                     </nav>
                 </div>
-                
-             	<div class="col-lg-3">
-                	<div id="wrap align-self-stretch">
-  						<form id="searchFrom" action="product/product" method="get" autocomplete="on">
-  							<input id="search" name="search" type="text" placeholder="찾으시는 제품명을 입력해주세요" value="${pageMaker.cri.keyword }"><input id="search_submit" value="Rechercher" type="submit">
-  							<button class='btn btn-default'>search</button>
-  						</form>
-					</div>
-					<form id="moveForm" method="get">
-						<input type="hidden" name="pageNum" vlue="${pageMaker.cri.pageNum }">
-						<input type="hidden" name="amount" vlue="${pageMaker.cri.amount }">
-						<input type="hidden" name="keyword" vlue="${pageMaker.cri.keyword }">
+                <div class="col-lg-3">
+                <div id="wrap align-self-stretch">
+   <form id='searchForm' action="/product/list" method='get'> 
+      <input  type='text' name='keyword' placeholder="찾으시는 제품명을 입력해주세요" value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
+
+      <input  type='hidden' name='type' value='T' />
+      <input id="search_submit" value="Rechercher" type="submit">
+      <button class='btn btn-default'></button>
+   </form>
+
+
+					 </div>
+
+					 <form id='actionForm' action="/product/list" method='get'>
+						<input type='hidden' name='type' value='<c:out value="${ pageMaker.cri.type }"/>'> 
+						<input type='hidden' name='keyword' value='<c:out value="${ pageMaker.cri.keyword }"/>'>	
 					</form>
                 </div>
            
@@ -118,3 +124,56 @@
 <br><br><br><br><br>
     </header>
     <!-- Header Section End -->
+    
+<script type="text/javascript">
+	$(document).ready(function() {
+		var result = '<c:out value="${result}" />';
+		checkModal(result);
+		
+		history.replaceState({}, null, null);
+		
+		$("#regBtn").on("click", function(){
+			self.location = "/product/register";
+		});
+		
+		var actionForm = $("#actionForm");
+
+		$(".paginate_button a").on("click", function(e) {
+			
+			e.preventDefault();
+			console.log('click');
+
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionForm.submit();
+		});
+		
+		$(".move").on("click", function(e) {
+
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='name' value='"+ $(this).attr("href") + "'>");
+			actionForm.attr("action", "/product/get");
+			actionForm.submit();
+
+		});
+		
+		var searchForm = $("#searchForm");
+
+		$("#searchForm button").on("click", function(e) {
+			if (!searchForm.find("option:selected").val()) {
+				alert("검색종류를 선택하세요");
+				return false;
+			}
+
+			if (!searchForm.find("input[name='keyword']").val()) {
+				alert("키워드를 입력하세요");
+				return false;
+			}
+			
+			searchForm.find("input[name='pageNum']").val("1");
+			e.preventDefault();
+
+			searchForm.submit();
+
+		});
+	});
+</script>
