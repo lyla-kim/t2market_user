@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/resources/css/searchForm.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/menu.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/goodDetail.css" type="text/css">
 
 
 

@@ -52,7 +52,11 @@
                                     aria-selected="false">Reviews <span>(1)</span></a>
                             </li>
                         </ul>
-                        
+ <!--                        <c:if test="${member != null }"> -->
+						<div class="reply_button_wrap">
+							<button>리뷰 쓰기</button>
+						</div>
+<!--					</c:if>	-->
                     </div>
                 </div>
             </div>
@@ -75,6 +79,21 @@
 		form.attr("action", "/product/modify");
 		form.submit();
 	});	
+	
+	/* 리뷰 쓰기 */
+	$(".reply_botton_wrap").on("click",function(e){
+		
+		e.preventDefault();
+		
+		const memberId = '${member.memberId}';
+		const bookId = '${goodsInfo.bookId}';
+
+		let popUrl = "/replyEnroll/" + memberId + "?bookId=" + bookId;
+		console.log(popUrl);
+		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
+		
+		window.open(popUrl,"리뷰 쓰기",popOption);
+	})
 </script>	
 </body>
 <%@ include file="../includes/footer.jsp" %>
