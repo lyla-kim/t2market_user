@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../includes/user_header.jsp" %>
 
-  <div class="row">
+  <div class="row bg-white">
       <div class="col-lg-12">
           <h1 class="page-header">검색하신 상품 :<c:out value="${pageMaker.cri.keyword}"/></h1>
       </div>
@@ -22,13 +22,13 @@
   .a {color:#444} 
 </style>
   <!-- /.row -->
-  <div class="row">
+  <div class="row bg-white">
       <div class="col-lg-12">
           <div class="panel panel-default">              
               <!-- /.panel-heading -->
               <div class="panel-body">
 <div class="list_search_result">
-					<table class="type_list">
+					<table class="type_list" >
 						<colgroup>
 							<col width="110">
 							<col width="*">
@@ -59,21 +59,19 @@
 					</table>
 				</div>                       
 
-
-
 					 <div class='pull-right'>
 							<ul class="pagination" style="font-size:40px" >
 								<c:if test="${pageMaker.prev}">
-				              		<li class="paginate_button previous"><a href="/product/list?pageNum=${pageMaker.startPage -1}&amount=${pageMaker.cri.amount}">Previous</a>
+				              		<li class="paginate_button previous"><a class="page-link" href="/product/list?pageNum=${pageMaker.startPage -1}&amount=${pageMaker.cri.amount}">Previous</a>
 				              		</li>
 				            	</c:if>
 				
 					            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					              	<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}"><a href="/product/list?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword }&pageNum=${num}&amount=${pageMaker.cri.amount}">${num}</a></li>
+					              	<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}"><a class="page-link" href="/product/list?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword }&pageNum=${num}&amount=${pageMaker.cri.amount}">${num}</a></li>
 					            </c:forEach>
 				
 					            <c:if test="${pageMaker.next}">
-					              	<li class="paginate_button next"><a href="/product/list?pageNum=${pageMaker.endPage +1 }&amount=${pageMaker.cri.amount}">Next</a></li>
+					              	<li class="paginate_button next"><a class="page-link" href="/product/list?pageNum=${pageMaker.endPage +1 }&amount=${pageMaker.cri.amount}">Next</a></li>
 					            </c:if>
 					  		</ul>
 					  </div>

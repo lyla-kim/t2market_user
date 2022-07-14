@@ -12,8 +12,8 @@
 </style>
 </head>
 <body>
-<section class="product-details spad">
-        <div class="container">
+<section class="product-details spad bg-white">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
