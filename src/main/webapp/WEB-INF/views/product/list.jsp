@@ -44,7 +44,7 @@
 									</td>
 									<td class="detail">
 										<div class="title">
-											<a class='move' href='/product/get?product_no=<c:out value="${product.product_no}"/>'><c:out value="${product.name}" /></a>
+											<a style="color:black" class='move' href='/product/get?product_no=<c:out value="${product.product_no}"/>'><c:out value="${product.name}" /></a>
 										</div>
 										<div class="point">
 											<span> 별점 넣을 수 있으면 넣어볼게요</span>

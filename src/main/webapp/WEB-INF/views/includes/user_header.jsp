@@ -103,7 +103,7 @@
 
       <input  type='hidden' name='type' value='T' />
       <input id="search_submit" value="Rechercher" type="submit">
-      <button class='btn btn-default'></button>
+      
    </form>
 
 
