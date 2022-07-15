@@ -1,4 +1,4 @@
-package kr.co.T2Market.Controller;
+package kr.co.T2Market.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class ProductController {
+public class productdetailController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/product", method = RequestMethod.GET)
-	public String product(Locale locale, Model model) {
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String productdetail(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -29,6 +29,7 @@ public class ProductController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "product/product";
+		return "product/productdetail";
 	}
+	
 }

@@ -1,4 +1,4 @@
-package kr.co.T2Market.Controller;
+package kr.co.T2Market.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package kr.co.T2Market.Controller;
+package kr.co.T2Market.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

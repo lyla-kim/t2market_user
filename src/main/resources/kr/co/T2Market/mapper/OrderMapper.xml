@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.T2Market.mapper.OrderMapper">
+	
+	<select id="getList" resultType="kr.co.T2Market.domain.OrderVO">
+	<![CDATA[
+		select * from reciept where reciept_no > 0
+	]]>
+	</select>
+	
+	<insert id="insert">
+		insert into reciept (reciept_no, member_id, buyer_name, reciever_name, reciever_address, reciever_phone)
+		values (SEQ_reciept.nextval, #{member_id}, #{buyer_name}, #{reciever_name}, #{reciever_address}, #{reciever_phone})
+	</insert>
+	
+	<insert id="insertSelectKey">
+		
+		<selectKey keyProperty="reciept_no" order="BEFORE" resultType="String">
+			select SEQ_reciept.nextval from dual
+		</selectKey>
+		
+		insert into reciept (reciept_no, member_id, buyer_name, reciever_name, reciever_address, reciever_phone)
+		values (#{reciept_no}, #{member_id}, #{buyer_name}, #{reciever_name}, #{reciever_address}, #{reciever_phone})		
+	</insert>
+	
+	<select id="read" resultType="kr.co.T2Market.domain.OrderVO">
+		select * from reciept where reciept_no = #{reciept_no}
+	</select>
+	
+	<delete id="delete">
+		delete from reciept where reciept_no = #{reciept_no} 
+	</delete>
+	
+	<update id="update">
+		update reciept
+		set buyer_name = #{buyer_name},
+		reciever_name = #{reciever_name},
+		reciever_address = #{reciever_address},
+		updatedate = sysdate,
+		reciever_phone = #{reciever_phone}
+		where reciept_no = #{reciept_no}
+	</update>
+	
+	
+	
+</mapper>

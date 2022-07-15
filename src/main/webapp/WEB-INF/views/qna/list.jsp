@@ -29,7 +29,7 @@
                   </button>	
 				</div>
 				<br>
-              		
+              			
 					<thead align="center">
 						<tr>
 							<th>번호</th>
@@ -58,7 +58,7 @@
 
 				</table>
 				<br>
-				<div class='pull-right'>
+					<div class='pull-right'>
 				
 							<ul class="pagination">
 							
