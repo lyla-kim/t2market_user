@@ -5,7 +5,7 @@
 
   <div class="row bg-white">
       <div class="col-lg-12">
-          <h1 class="page-header">검색하신 상품 :<c:out value="${pageMaker.cri.keyword}"/></h1>
+          <h3 class="page-header">검색하신 상품 :<c:out value="${pageMaker.cri.keyword}"/></h3>
       </div>
       <!-- /.col-lg-12 -->
   </div>
@@ -41,6 +41,7 @@
 								<tr>
 									<td class="image">
 										<img src="/resources/img/latest-product/lp-1.jpg" >
+	
 									</td>
 									<td class="detail">
 										<div class="title">
@@ -58,6 +59,7 @@
 						</tbody>					
 					</table>
 				</div>                       
+				
 
 					 <div class='pull-right'>
 							<ul class="pagination" style="font-size:40px" >

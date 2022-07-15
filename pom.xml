@@ -32,7 +32,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<!-- lombok -->  
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -116,7 +116,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>5.0.7.RELEASE</version>
 		</dependency> 
 		
 		<!-- DB 연결을 위한 환경 설정-->

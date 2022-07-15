@@ -132,11 +132,7 @@
 		checkModal(result);
 		
 		history.replaceState({}, null, null);
-		
-		$("#regBtn").on("click", function(){
-			self.location = "/product/register";
-		});
-		
+						
 		var actionForm = $("#actionForm");
 
 		$(".paginate_button a").on("click", function(e) {
