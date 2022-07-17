@@ -24,4 +24,6 @@ public interface ProductMapper {
 	public int getTotal(Criteria cri);
 	
 	public List<ProductVO> list(Criteria cri) throws Exception;
+	
+	
 }

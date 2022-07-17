@@ -67,5 +67,6 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return mapper.getPage(product_no);
 	}
+	
 
 }

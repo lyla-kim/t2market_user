@@ -19,4 +19,5 @@ public interface ProductService {
 	public List<ProductVO> getListPaging(Criteria cri);
 	
 	public int getTotal(Criteria cri);
+
 }

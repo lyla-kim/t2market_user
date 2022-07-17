@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+
 <!-- Css Styles -->
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/font-awesome.min.css" type="text/css">
@@ -32,6 +33,7 @@
 
  <!-- Header Section Begin -->
     <header class="header bg-white" >
+    
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">

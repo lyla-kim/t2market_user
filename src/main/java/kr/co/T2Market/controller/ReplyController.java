@@ -1,23 +1,28 @@
 package kr.co.T2Market.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import javax.inject.Inject;
 
-import kr.co.T2Market.domain.ReplyDTO;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.co.T2Market.domain.ReplyVO;
 import kr.co.T2Market.service.ReplyService;
 
-@RestController
-@RequestMapping("/reply")
+@Controller
+@RequestMapping("/review/*")
 public class ReplyController {
-
-	@Autowired
-	private ReplyService replyService;
 	
-	/* 댓글 등록 */
-	@PostMapping("/enroll")
-	public void enrollReplyPOST(ReplyDTO dto) {
-		replyService.enrollReply(dto);
+	@Inject
+	private ReplyService review;
+	
+	// 댓글 작성
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String posttWirte(ReplyVO vo) throws Exception {
+		
+		review.write(vo);
+		
+		return "redirect:/product/get?product_no=" + vo.getProduct_no();
 	}
+
 }

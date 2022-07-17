@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../includes/user_header.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
   <div class="row bg-white">
       <div class="col-lg-12">
           <h3 class="page-header">검색하신 상품 :<c:out value="${pageMaker.cri.keyword}"/></h3>

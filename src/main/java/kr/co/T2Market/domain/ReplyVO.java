@@ -2,22 +2,19 @@ package kr.co.T2Market.domain;
 
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
-public class ReplyDTO {
+
+@Data
+public class ReplyVO {
 
 	private String review_no;
 	
 	private String product_no;
 	
-	private String Member_id;
+	private String member_id;
 
-	private Date Regdate;
+	private Date regdate;
 	
 	private String reply;
 	

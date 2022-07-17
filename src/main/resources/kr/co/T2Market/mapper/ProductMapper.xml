@@ -74,5 +74,12 @@
   	select product_no, name, explain, code1, code2, real_price from product where product_no = #{product_no}
   </select>
   
+  	<select id="getProductIdName" resultType="kr.co.T2Market.domain.ProductVO">
+	
+		select Product_no, name from product 
+		where product_no = #{product_no}
+	
+	
+	</select>
 
   </mapper>

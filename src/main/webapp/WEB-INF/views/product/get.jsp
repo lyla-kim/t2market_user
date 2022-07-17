@@ -7,131 +7,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <style>
-  /* 리뷰쓰기 버튼 */
-  .reply_button_wrap{
-  	padding : 10px;
-  }
-  .reply_button_wrap button{
-	background-color: #365fdd;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 5px 12px;
-    cursor: pointer;  
-  }
-  .reply_button_wrap button:hover{
-  	background-color: #1347e7;
-  }
-  
-  /* 리뷰 영역 */
-  	.content_bottom{
-  		width: 80%;
-  		margin : auto;
-  	}
-	.reply_content_ul{
-		list-style: none;
-	}
-	.comment_wrap{
-		position: relative;
-    	border-bottom: 1px dotted #d4d4d4;
-    	padding: 14px 0 10px 0;	
-    	font-size: 12px;
-	}
-		/* 리뷰 머리 부분 */
-		.reply_top{
-			padding-bottom: 10px;
-		}
-		.id_span{
-			padding: 0 15px 0 3px;
-		    font-weight: bold;		
-		}
-		.date_span{
-			padding: 0 15px 0;
-		}
-		/* 리뷰 컨텐트 부분 */
-		.reply_bottom{
-			padding-bottom: 10px;
-		}
-		
-	
-	/* 리뷰 선 */
-	.reply_line{
-		width : 80%;
-		margin : auto;
-		border-top:1px solid #c6c6cf;  	
-	}
-	
-	/* 리뷰 제목 */
-	.reply_subject h2{
-		padding: 15px 0 5px 5px;
-	}
-	
-	/* pageMaker */
-	.repy_pageInfo_div{
-		text-align: center;
-	    margin-top: 30px;
-	    margin-bottom: 40px;	
-	}
-	.pageMaker{
-	    list-style: none;
-	    display: inline-block;	
-	}
-	.pageMaker_btn{
-		float: left;
-	    width: 25px;
-	    height: 25px;
-	    line-height: 25px;
-	    margin-left: 20px;
-	    font-size: 10px;
-	    cursor: pointer;
-	}
-	.active{
-		border : 2px solid black;
-		font-weight:400;	
-	}
-	.next, .prev {
-	    border: 1px solid #ccc;
-	    padding: 0 10px;
-	}	
-  
-  /* 리뷰 없는 경우 div */
-  .reply_not_div{
-  	text-align: center;
-  }
-  .reply_not_div span{
-	display: block;
-    margin-top: 30px;
-    margin-bottom: 20px; 
-  }
-  
-  /* 리뷰 수정 삭제 버튼 */
-  .update_reply_btn{
- 	font-weight: bold;
-    background-color: #b7b399;
-    display: inline-block;
-    width: 40px;
-    text-align: center;
-    height: 20px;
-    line-height: 20px;
-    margin: 0 5px 0 30px;
-    border-radius: 6px;
-    color: white; 
-    cursor: pointer;
-  }
-  .delete_reply_btn{
- 	font-weight: bold;
-    background-color: #e7578f;
-    display: inline-block;
-    width: 40px;
-    text-align: center;
-    height: 20px;
-    line-height: 20px;
-    border-radius: 6px;
-    color: white; 
-  	cursor: pointer;
-  }
+
 </style>
 </head>
 <body>
@@ -174,53 +53,55 @@
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
                                     aria-selected="false">Reviews <span>(1)</span></a>
 									<div class="reply_subject">
-										<h2>리뷰</h2>
-									</div>                       
+										<h2>리뷰</h2>									                      
  <!--                        <c:if test="${member != null }"> -->									             
-									<div class="reply_button_wrap">
-										<button>리뷰 쓰기</button>
-									</div>
+										
+									</div> 
 <!--					</c:if>	-->                                    
                             </li>
                         </ul>
                      </div>
                 </div>
-            </div>
+                <ul>
+					<c:forEach items="${review}" var="review">
+					<li>
+						<div>
+							<p>${review.member_id} / <fmt:formatDate value="${review.regdate}" pattern="yyyy-MM-dd" /></p>
+							<p>${review.reply }</p>
+						</div>
+					</li>	
+					</c:forEach>
+				</ul>
+			</div>
+				<div>
+				
+					<form method="GET" action="/review/write">
+					
+						<p>
+							<label>댓글 작성자</label> <input type="text" name="writer">
+						</p>
+						<p>
+							<textarea rows="5" cols="50" name="content"></textarea>
+						</p>
+						<p>
+							<input type="hidden" name="product_no" value="${product.product_no}">
+							<button type="submit">댓글 작성</button>
+						</p>
+					</form>
+					
+				</div>
+           
         </div>
     </section>
 	
 	<form id="infoForm" action="/product/modify" method="get">
 		<input type="hidden" id="name" name="name" value='<c:out value="${pageInfo.product_no}"/>'>
 	</form>
-<script>
-	let form = $("#infoForm");
-	
-	$("#list_btn").on("click", function(e){
-		form.find("#product_no").remove();
-		form.attr("action", "/product/list");
-		form.submit();
-	});
-	
-	$("#modify_btn").on("click", function(e){
-		form.attr("action", "/product/modify");
-		form.submit();
-	});	
-	
-	/* 리뷰 쓰기 */
-	$(".reply_button_wrap").on("click",function(e){
-		
-		e.preventDefault();
-		
-		const member_id = '${member.member_id}';
-		const product_no = '${goodsInfo.product_id}';
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 
-		let popUrl = "/replyEnroll/" + member_id + "?product_id=" + product_id;
-		console.log(popUrl);
-		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
-		
-		window.open(popUrl,"리뷰 쓰기",popOption);
-	})
-</script>	
+<script>
+
+</script>
 </body>
 <%@ include file="../includes/footer.jsp" %>
 </html>

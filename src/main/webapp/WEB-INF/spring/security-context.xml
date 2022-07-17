@@ -30,7 +30,7 @@
 	
 	<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"/>
 	
-	<security:access-denied-handler ref="customAccessDenied" />
+	<!-- <security:access-denied-handler ref="customAccessDenied" /> -->
 
 </security:http>
 
