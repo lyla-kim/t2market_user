@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../includes/user_header.jsp" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
   <div class="row bg-white">
       <div class="col-lg-12">
@@ -40,7 +41,7 @@
 							<c:forEach items="${list}" var="product">
 								<tr>
 									<td class="image">
-										<img src="/resources/img/latest-product/lp-1.jpg" >
+										<img src="<spring:url value='/img/${product.product_no}.jpg'/>" />
 	
 									</td>
 									<td class="detail">

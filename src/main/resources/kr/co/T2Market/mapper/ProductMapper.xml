@@ -31,7 +31,7 @@
 		    from 
 		      (
 			      select /*+INDEX_DESC(product pk_product) */
-			        rownum rn, product_no, name, code1, code2, explain, regdate, active 
+			        rownum rn, product_no, name, code1, code2, explain,real_price, regdate, active 
 			      from 
 			        product
 			      where 
@@ -71,7 +71,7 @@
   </insert>
   
   <select id="getPage" resultType="kr.co.T2Market.domain.ProductVO">
-  	select product_no, name, explain, code1, code2 from product where product_no = #{product_no}
+  	select product_no, name, explain, code1, code2, real_price from product where product_no = #{product_no}
   </select>
   
 

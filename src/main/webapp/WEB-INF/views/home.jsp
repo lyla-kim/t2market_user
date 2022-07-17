@@ -74,28 +74,28 @@
             <div class="row">
                 <div class="categories__slider owl-carousel">
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-1.jpg">
-                            <h5><a href="#">과일</a></h5>
+                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/new001.jpg">
+                            <h5><a href='/product/get?product_no=new001'>건강을 품은 7가지 곡물 쫀드기(75g X 5개)</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-2.jpg">
-                            <h5><a href="#">간식</a></h5>
+                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/new002.jpg">
+                            <h5><a href='/product/get?product_no=new002'>샌드위치용 달걀듬뿍 샐러드 120g</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-3.jpg">
-                            <h5><a href="#">야채</a></h5>
+                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/new003.jpg">
+                            <h5><a href='/product/get?product_no=new003'>대왕가자미 순살 스테이크 250g</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-4.jpg">
-                            <h5><a href="#">음료</a></h5>
+                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/new004.jpg">
+                            <h5><a href='/product/get?product_no=new004'>유기농 용의 눈동자 백미 2kg</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-5.jpg">
-                            <h5><a href="#">육류</a></h5>
+                        <div class="categories__item set-bg" data-setbg="/resources/img/categories/new005.jpg">
+                            <h5><a href='/product/get?product_no=new005'>[청담동 피양옥]비빔냉면(2인분)</a></h5>
                         </div>
                     </div>
                 </div>
@@ -121,27 +121,27 @@
                 <div class="categories__slider owl-carousel">
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-1.jpg">
-                            <h5><a href="#">Fresh Fruit</a></h5>
+                            <h5><a href='/product/get?product_no=orange001'>오렌지</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
+                            <h5><a href='/product/get?product_no=nut001'>견과류</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-3.jpg">
-                            <h5><a href="#">Vegetables</a></h5>
+                            <h5><a href='/product/get?product_no=main003'>친환경쌈채소모둠 200g</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
+                            <h5><a href='/product/get?product_no=main004'>과일주스</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="/resources/img/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
+                            <h5><a href='/product/get?product_no=main005'>쇠고기</a></h5>
                         </div>
                     </div>
                 </div>
