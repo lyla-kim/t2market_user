@@ -43,7 +43,7 @@
 							<br>
 							<div class="mx-auto" align="right">
 								<button type="submit" class="btn btn-outline-success">저장</button>
-								<button type="button" class="btn btn-outline-secondary">목록</button>
+								<button type="button" onclick = "location.href='/qna/list'" class="btn btn-outline-secondary">목록</button>
 							</div>
 							<br>
 							</form>

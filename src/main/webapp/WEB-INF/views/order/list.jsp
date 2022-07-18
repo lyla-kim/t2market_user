@@ -53,10 +53,10 @@
                                     <td class="shoping__cart__price">
                                         $55.00
                                     </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                           <b>1</b> 
-                                        </div>
+                                    <td class="shoping__cart__quantity">        
+                                    <input type="text" class="quantity_input" value="1"> 
+                                        <span> <b>1<b></b> </span>
+                                       
                                     </td>
                                     <td class="shoping__cart__total">
                                         $110.00
@@ -142,7 +142,6 @@
                     <div class="shoping__checkout bg-white">
                         <h5 align="center">수신인 정보</h5>
                         <ul>
-							<form role="form" action="/order/register" method="post">
                         	<div class="form-group">
 								<label>성명</label> <input class="form-control" name='reciever_name'>
 							</div>
@@ -187,6 +186,67 @@
 </div>
 </body>
 
+
+<div class="button">
+	<div class="button_quantity">
+		주문수량
+		<input type="text" class="quantity input" value="1">
+		<span>
+			<button class="plus_btn">+</button>
+			<button class="plus_btn">-</button>
+		</span>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+//수량 버튼 조작
+	let quantity = $(".quantity_input").val();
+	$(".plus_btn").on("click", function() {
+		$(".quantity_input").val(++quantity);
+	});
+	$(".minus_btn").on("click", function() {
+		if(quantity > 1) {
+			$(".quantity_input").val(--quantity);
+		}
+	});
+	
+// 서버로 전송할 데이터
+
+const form = {
+		member_id : '${member.member_id}'
+		product_id : '${product.product_id}',
+		sales : ''
+}
+
+//장바구니 추가 버튼 기능
+
+$(".btn_cart").on("click", function(e){
+		form.sales = $(.quantity_input).val();
+		$(.ajax)({
+			url: '/cart/add',
+			type: 'POST'
+			data: form,
+			success: function(result) {
+				cartAlert(result);
+			}
+		})
+	});
+	
+	function cartAlert(result) {
+		if(result == '0') {
+			alert("장바구니에 추가를 하지 못하였습니다.");
+	} else if(result == '1') {
+			alert("장바구니에 추가되었습니다.");
+	} else if(result == '2') {
+			alert("장바구니에 이미 추가되어져 있습니다.");
+	} else if(result == '5') {
+			alert("로그인이 필요합니다.");
+	}
+		
+}
+
+</script>
 
 <%@ include file="./includes/footer.jsp"%>
 </html>
