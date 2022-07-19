@@ -4,36 +4,43 @@
   <mapper namespace="kr.co.T2Market.mapper.ReplyMapper">
  
  	<!-- 댓글 조회 -->
-   	<select id="list" parameterType="String" resultType="kr.co.T2Market.domain.ReplyVO">
+   	<select id="read" resultType="kr.co.T2Market.domain.ReplyVO">
   	
-  		select * from review where product_no = #{product_no}
+  		select * from review where review_no = #{review_no}
   	</select>
  
   	<!-- 댓글등록 -->
-  	<insert id="write" parameterType="kr.co.T2Market.domain.ReplyVO">
+  	<insert id="insert" parameterType="kr.co.T2Market.domain.ReplyVO">
   	
-  		insert into review (review_no, product_no, member_id) 
-  		values(rev_seq.nextval, #{product_no},'TEST')
-  		
-  		
-  	
+  		insert into review (review_no, product_no, member_id, reply, score, regdate, updatedate) 
+  		values(rev_seq.nextval, #{product_no}, 'TEST', #{reply}, #{score}, sysdate, sysdate)
+  
   	</insert>
   	
+  	  	
   	<!-- 댓글 수정 -->
-  	<update id ="modify" parameterType="kr.co.T2Market.domain.ReplyVO">
+  	<update id ="update" parameterType="kr.co.T2Market.domain.ReplyVO">
   	
   		update review set 
   		reply = #{reply}, 
   		updatedate = sysdate
-  		where product_no = #{product_no}
+  		where review_no = #{review_no}
   	</update>  	
 
   	
   	<delete id ="delete" parameterType="kr.co.T2Market.domain.ReplyVO">
   	
-  		delete from review where product_no = #{product_no}
+  		delete from review where review_no = #{review_no}
   		and member_id='TEST'
   		
   	</delete>
+  	
+  	<select id="getListWithPaging" resultType="kr.co.T2Market.domain.ReplyVO">
+  		select * 
+  		from review
+  		where product_no = #{product_no}
+  		order by review_no asc
+  	
+  	</select>
 
   </mapper>

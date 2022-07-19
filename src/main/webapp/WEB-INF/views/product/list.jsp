@@ -51,7 +51,7 @@
 											<span> 별점 넣을 수 있으면 넣어볼게요</span>
 										</div>
 										<div class="price">
-											<c:out value="${product.sell_price}"/>
+											<c:out value="${product.real_price}"/>
 										</div>
 									</td>
 								</tr>

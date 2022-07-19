@@ -58,12 +58,7 @@
         </if>
     
     </select>
- 
-  <select id="getList" resultType="kr.co.T2Market.domain.ProductVO">
-  <![CDATA[
-  select * from product
-  ]]>
-  </select>
+
   
   <insert id="insert">
   	insert into product (product_no, code1, code2, explain, name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active)

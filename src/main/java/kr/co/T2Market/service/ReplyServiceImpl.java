@@ -2,42 +2,52 @@ package kr.co.T2Market.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.T2Market.domain.Criteria;
 import kr.co.T2Market.domain.ReplyVO;
 import kr.co.T2Market.mapper.ReplyMapper;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Service
+@AllArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
-
-	@Inject
-	private ReplyMapper dao;
-
-	// 댓글 조회
+	
+	@Setter(onMethod_ =@Autowired)
+	private ReplyMapper mapper;
+	
 	@Override
-	public List<ReplyVO> list(String product_no) throws Exception {
-		return dao.list(product_no);
+	public int register(ReplyVO vo) {
+		log.info("register...." + vo);
+		return mapper.insert(vo);
 	}
 
 	@Override
-	public void write(ReplyVO vo) throws Exception {
-		dao.write(vo);
+	public ReplyVO get(String review_no) {
+		log.info("get...." + review_no);
+		return mapper.read(review_no);
 	}
 
 	@Override
-	public void modify(ReplyVO vo) throws Exception {
-		dao.modify(vo);
+	public int remove(String review_no) {
+		log.info("remove....." + review_no);
+		return mapper.delete(review_no);
 	}
 
 	@Override
-	public void delete(ReplyVO vo) throws Exception {
-		dao.delete(vo);
+	public int modify(ReplyVO review) {
+		log.info("modify....." + review);
+		return mapper.update(review);
+	}
+
+	@Override
+	public List<ReplyVO> getList(Criteria cri, String product_no) {
+		log.info("get Reply list " + product_no);
+		return mapper.getListWithPaging(cri, product_no);
 	}
 
 }

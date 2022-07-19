@@ -40,9 +40,7 @@ public class ProductController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	
-	@Inject
-	private ReplyService replyService;
+
 	
 	@GetMapping("/list")
 	public void productList(Criteria cri, Model model) {
@@ -64,9 +62,9 @@ public class ProductController {
 		model.addAttribute("pageInfo", service.getPage(product_no));
 		
 
+		
 	}
-	
 
-
+			
 
 }

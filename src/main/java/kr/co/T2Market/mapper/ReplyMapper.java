@@ -9,15 +9,15 @@ import kr.co.T2Market.domain.ProductVO;
 import kr.co.T2Market.domain.ReplyVO;
 
 public interface ReplyMapper {
-	//댓글 조회
-	public List<ReplyVO> list(String product_no) throws Exception;
+
+	public int insert(ReplyVO vo);
 	
-	//댓글 조회
-	public void write(ReplyVO vo) throws Exception;
+	public ReplyVO read(String review_no);
 	
-	//댓글 수정
-	public void modify(ReplyVO vo) throws Exception;
+	public int delete(String review_no);
 	
-	//댓글 삭제
-	public void delete(ReplyVO vo) throws Exception;
+	public int update(ReplyVO review);
+	
+	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("product_no") String product_no);
+	
 } 
