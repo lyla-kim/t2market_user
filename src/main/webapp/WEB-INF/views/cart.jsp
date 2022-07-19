@@ -53,7 +53,7 @@
 										<input type="hidden" class="individual_realPrice_input" value="${ci.real_price}">
 										<input type="hidden" class="individual_sales_input" value="${ci.sales}">
 										<input type="hidden" class="individual_totalPrice_input" value="${ci.real_price * ci.sales}">
-										<input type="hidden" class="individual_productno_input" value="${ci.product_no}">
+										<input type="hidden" class="individual_product_no_input" value="${ci.product_no}">                                		
                                 	</td>
                
                                     <td class="shoping__cart__item">            
@@ -96,7 +96,7 @@
                             <div class="totalPrice_div">$454.98</div>
                             </div></li>
                       
-                <button type="submit" class="btn btn-success">주문하기</button>
+                <button class="order_btn btn btn-success">주문하기</button>
                 </div>
                         </ul>
                     </div>  
@@ -124,6 +124,11 @@
 				<input type="hidden" name="cart_no" class="delete_cart_no">
 				<input type="hidden" name="member_id" value="${ci.member_id}">
 			</form>
+			
+<!--  주문 form --> <!--${member.member_id }"-->
+	<form action="/order/member1" method="get" class="order_form">
+		
+	</form>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -189,6 +194,35 @@
 		const cart_no = $(this).data("cart_no");
 		$(".delete_cart_no").val(cart_no);
 		$(".quantity_delete_form").submit();
+	});
+	
+	/* 주문 페이지 이동 */	
+	$(".order_btn").on("click", function(){
+		
+		let form_contents ='';
+		let orderNumber = 0;
+		
+		$(".cart_info_td").each(function(index, element){
+			
+			if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//박스 체크여부
+				
+				let product_no = $(element).find(".individual_product_no_input").val();
+				let sales = $(element).find(".individual_sales_input").val();
+				
+				let product_no_input = "<input name='orders[" + orderNumber + "].product_no' type='hidden' value='" + product_no + "'>";
+				form_contents += product_no_input;
+				
+				let sales_input = "<input name='orders[" + orderNumber + "].sales' type='hidden' value='" + sales + "'>";
+				form_contents += sales_input;
+				
+				orderNumber += 1;
+				
+			}
+		});	
+
+		$(".order_form").html(form_contents);
+		$(".order_form").submit();
+		
 	});
 </script>
 

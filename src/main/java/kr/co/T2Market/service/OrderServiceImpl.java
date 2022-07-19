@@ -1,50 +1,38 @@
 package kr.co.T2Market.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.T2Market.domain.OrderVO;
+import kr.co.T2Market.domain.OrderPageItemDTO;
 import kr.co.T2Market.mapper.OrderMapper;
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Service
-@AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-	private OrderMapper mapper;
+	@Autowired
+	private OrderMapper orderMapper;
+	
 	
 	@Override
-	public void register(OrderVO order) {
+	public List<OrderPageItemDTO> getGoodsInfo(List<OrderPageItemDTO> orders) {
 		
-		mapper.insertSelectKey(order);
-
-	}
-
-	@Override
-	public OrderVO get(String reciept_no) {
-		// TODO Auto-generated method stub
-		return mapper.read(reciept_no);
-	}
-
-	@Override
-	public boolean modify(OrderVO order) {
-		// TODO Auto-generated method stub
-		return mapper.update(order) == 1;
-	}
-
-	@Override
-	public boolean remove(String reciept_no) {
-		// TODO Auto-generated method stub
-		return mapper.delete(reciept_no) == 1;
-	}
-
-	@Override
-	public List<OrderVO> getList() {
-		// TODO Auto-generated method stub
-		return mapper.getList();
+		List<OrderPageItemDTO> result = new ArrayList<OrderPageItemDTO>();
+		
+		for(OrderPageItemDTO ord : orders) {
+			
+			OrderPageItemDTO goodsInfo = orderMapper.getGoodsInfo(ord.getProduct_no());
+			
+			goodsInfo.setSales(ord.getSales());
+			
+			goodsInfo.initSaleTotal();
+			
+			result.add(goodsInfo);
+		}
+		
+		return result;
 	}
 
 }

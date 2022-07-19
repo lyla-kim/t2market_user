@@ -14,7 +14,7 @@
 
 
    <!-- Footer Section Begin -->
-    <footer class="footer spad">
+    <footer class="footer spad bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
