@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/resources/css/menu.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/board.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/join.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/login.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css">
 
 
@@ -52,6 +54,7 @@
                                     <li><a href="/qna/list">1:1상담</a></li>
                                 </ul>
                             </div>
+                            
                             	<!-- 로그인 하지 않은 상태 -->
                             <div class="header__top__right__auth">
                                 <c:if test = "${member == null }">
@@ -68,8 +71,8 @@
 				                    </div>
 				                </c:if>
 				                
+				              </div>
                             </div>
-                        </div>
                         </div>
                  </div>
                   </div>
@@ -100,7 +103,7 @@
                             <li><a href="#">Recommend</a>
   
                                 
-							<li><a href="/cart/${member.member_id }"><i class="fa fa-shopping-bag w-100 h-100" ></i></a></li>
+                                <li><a href="/cart/${member.member_id }"><i class="fa fa-shopping-bag w-100 h-100" ></i></a></li>
 							
                         </ul>
                     </nav>

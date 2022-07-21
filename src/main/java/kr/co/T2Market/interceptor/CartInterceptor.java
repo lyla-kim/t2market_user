@@ -8,13 +8,24 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import kr.co.T2Market.domain.MemberVO;
+
 public class CartInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return HandlerInterceptor.super.preHandle(request, response, handler);
+		
+		HttpSession session = request.getSession();
+		
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		
+		if(mvo == null) {
+			response.sendRedirect("/");
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
 

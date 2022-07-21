@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.T2Market.domain.OrderDTO;
 import kr.co.T2Market.domain.OrderPageDTO;
+import kr.co.T2Market.service.MemberService;
 import kr.co.T2Market.service.OrderService;
 
 @Controller
@@ -18,12 +19,15 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private MemberService memberService;
 
 	@GetMapping("/order/{member_id}")
 	public String orderPageGet(@PathVariable("member_id") String member_id, OrderPageDTO opd, Model model) {
 		
 		model.addAttribute("orderList", orderService.getGoodsInfo(opd.getOrders()));
-		
+		model.addAttribute("memberInfo", memberService.getMemberInfo(member_id));
 		return "/order";
 	}
 	

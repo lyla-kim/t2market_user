@@ -125,8 +125,8 @@
 				<input type="hidden" name="member_id" value="${ci.member_id}">
 			</form>
 			
-<!--  주문 form --> <!--${member.member_id }"-->
-	<form action="/order/member1" method="get" class="order_form">
+<!--  주문 form --> 
+	<form action="/order/${member.member_id }" method="get" class="order_form">
 		
 	</form>
 

@@ -1,17 +1,22 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css">
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="/resources/css/searchForm.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/elegant-icons.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/nice-select.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/style.css" type="text/css">
-<link rel="stylesheet" href="/resources/css/searchForm.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/menu.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/board.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/join.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/login.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css">
 
 
 
@@ -28,7 +33,7 @@
 
 
  <!-- Header Section Begin -->
-    <header class="header bg-white" >
+    <header class="header bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -39,7 +44,7 @@
                  <div class="col-lg-5">
                                          <div class="header__top__right">
                             <div class="header__top__right__social">
-                               <a href=#><i class="fa fa-se"><span style="color:green">회원가입</span></i> </a>
+                               <a href="#"><i class="fa fa-se"><span style="color:green">회원가입</span></i> </a>
                             </div>
                             <div class="header__top__right__language">
                                 <div>고객센터</div>
@@ -49,9 +54,23 @@
                                     <li><a href="/qna/list">1:1상담</a></li>
                                 </ul>
                             </div>
+                            
+                            	<!-- 로그인 하지 않은 상태 -->
                             <div class="header__top__right__auth">
-                                <a href="#">로그인</a>
-                                
+                                <c:if test = "${member == null }">
+                    			<div class="login_button"><a href="/member/login">로그인</a></div>
+                    			<span><a href="/member/join">회원가입</a></span>                
+                				</c:if>  
+                				
+                				<!-- 로그인 한 상태 -->
+                			<div class="header__top__right__auth">
+                                <c:if test="${ member != null }">
+				                    <div class="login_success_area">
+				                        <span>회원 : ${member.member_name}</span>
+				                        <a href="/member/logout.do">로그아웃</a>
+				                    </div>
+				                </c:if>
+				             </div>   
                             </div>
                         </div>
                  </div>
@@ -78,19 +97,13 @@
                                     <li><a href="#">간식</a></li>
                                     <li><a href="#">베이커리</a></li>                                    
                                 </ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./index.html">Home</a></li>
                             <li><a href="./shop-grid.html">New</a></li>
                             <li><a href="#">Recommend</a>
-                            
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>                                   
-                                </ul>
+  
                                 
-                                <li><a href="/cart/${member.member_id}"><i class="fa fa-shopping-bag w-100 h-100" ></i></a></li>
-							
+                             <li><a href="/cart/${member.member_id }"><i class="fa fa-shopping-bag w-100 h-100" ></i></a></li>
+														
                         </ul>
                     </nav>
                 </div>
@@ -98,7 +111,8 @@
                  <div class="col-lg-3">
                 <div id="wrap align-self-stretch">
   <form action="" autocomplete="on">
-  <input id="search" name="search" type="text" placeholder="찾으시는 제품명을 입력해주세요"><input id="search_submit" value="Rechercher" type="submit">
+  <input id="search" name="search" type="text" placeholder="찾으시는 제품명을 입력해주세요">
+  <input id="search_submit" value="Rechercher" type="submit">
   </form>
 </div>
 
@@ -108,8 +122,8 @@
 </div>
 </div>
 </div>
-
 </div>
+
 <br><br><br><br><br>
     </header>
     <!-- Header Section End -->

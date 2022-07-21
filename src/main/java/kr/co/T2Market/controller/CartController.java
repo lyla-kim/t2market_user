@@ -44,7 +44,7 @@ public class CartController {
 		
 		cartService.modifyCount(cart);
 		
-		return "redirect:/cart/member1"; //cart.getMember_id();
+		return "redirect:/cart/" + cart.getMember_id();
 	
 	}
 	
@@ -53,7 +53,7 @@ public class CartController {
 		
 		cartService.deleteCart(cart.getCart_no());
 		
-		return "redirect:/cart/member1"; //cart.getMember_id();
+		return "redirect:/cart/" + cart.getMember_id();
 	}
 	
 }

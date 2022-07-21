@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ include file="qna/includes/user_header.jsp"%>
+
 
 
 <!DOCTYPE html>
@@ -10,6 +10,7 @@
 <title></title>
 
 <link rel="stylesheet" href="/resources/css/order.css">
+<%@ include file="qna/includes/user_header.jsp"%>
 
 <!-- 카카오 주소 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -44,7 +45,7 @@
 						<tbody>
 							<tr>
 								<th style="width: 25%;">주문자</th>
-								<td style="width: *">${memberInfo.memberName} | ${memberInfo.memberMail}</td>
+								<td style="width: *">${memberInfo.member_name} | ${memberInfo.email}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -66,18 +67,18 @@
 				<tr>
 					<th>이름</th>
 					<td>
-						${memberInfo.memberName}
+						${memberInfo.member_name}
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td>
-						${memberInfo.memberAddr1} ${memberInfo.memberAddr2}<br>${memberInfo.memberAddr3}
+						${memberInfo.address} ${memberInfo.address2}<br>${memberInfo.address3}
 						<input class="selectAddress" value="T" type="hidden">
-						<input class="addressee_input" value="${memberInfo.memberName}" type="hidden">
-						<input class="address1_input" type="hidden" value="${memberInfo.memberAddr1}">
-						<input class="address2_input" type="hidden" value="${memberInfo.memberAddr2}">
-						<input class="address3_input" type="hidden" value="${memberInfo.memberAddr3}">										
+						<input class="addressee_input" value="${memberInfo.member_name}" type="hidden">
+						<input class="address1_input" type="hidden" value="${memberInfo.address}">
+						<input class="address2_input" type="hidden" value="${memberInfo.address2}">
+						<input class="address3_input" type="hidden" value="${memberInfo.address3}">										
 					</td>
 				</tr>
 				
@@ -206,12 +207,12 @@
 		
 		<form class="order_form" action="/order" method="post">
 			<!-- 주문자 회원번호 -->
-			<input name="memberId" value="${memberInfo.memberId}" type="hidden">
+			<input name="memberId" value="${memberInfo.member_id}" type="hidden">
 			<!-- 주소록 & 받는이-->
 			<input name="addressee" type="hidden">
-			<input name="memberAddr1" type="hidden">
-			<input name="memberAddr2" type="hidden">
-			<input name="memberAddr3" type="hidden">
+			<input name="address" type="hidden">
+			<input name="address2" type="hidden">
+			<input name="address3" type="hidden">
 
 
 			<!-- 상품 정보 -->
@@ -344,9 +345,9 @@
 		$(".addressInfo_input_div").each(function(i, obj){
 			if($(obj).find(".selectAddress").val() === 'T'){
 				$("input[name='addressee']").val($(obj).find(".addressee_input").val());
-				$("input[name='memberAddr1']").val($(obj).find(".address1_input").val());
-				$("input[name='memberAddr2']").val($(obj).find(".address2_input").val());
-				$("input[name='memberAddr3']").val($(obj).find(".address3_input").val());
+				$("input[name='address']").val($(obj).find(".address1_input").val());
+				$("input[name='address2']").val($(obj).find(".address2_input").val());
+				$("input[name='address3']").val($(obj).find(".address3_input").val());
 			}
 		});	
 			/* 상품정보 */

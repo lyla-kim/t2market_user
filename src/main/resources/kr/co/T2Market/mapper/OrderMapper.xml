@@ -11,4 +11,11 @@
 		
 	</select>
 	
+	<select id="getOrderInfo" resultType="kr.co.T2Market.domain.OrderItemDTO">
+	
+		select product_no, sell_price, sales
+		from product where product_no = #{product_no}
+	
+	</select>
+	
 </mapper>
