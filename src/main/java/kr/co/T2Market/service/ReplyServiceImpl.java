@@ -22,8 +22,8 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	@Override
 	public int register(ReplyVO vo) {
-		log.info("register...." + vo);
-		return mapper.insert(vo);
+
+		return 0;
 	}
 
 	@Override
@@ -33,9 +33,10 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int remove(String review_no) {
+	public void remove(String review_no) {
 		log.info("remove....." + review_no);
-		return mapper.delete(review_no);
+		mapper.delete(review_no);
+		return;
 	}
 
 	@Override
@@ -49,5 +50,30 @@ public class ReplyServiceImpl implements ReplyService {
 		log.info("get Reply list " + product_no);
 		return mapper.getListWithPaging(cri, product_no);
 	}
+	
+	@Override
+	public int gettotalr(Criteria cri) {
+		return mapper.gettotalr(cri);
+	}
+	
+	@Override
+	public void writeReply(ReplyVO vo) throws Exception {
+		mapper.writeReply(vo);
+	}
+	
+	@Override
+	public int selectCount(String product_no) {
+		return mapper.selectCount(product_no);
+	}
 
+	@Override
+	public int sumreview(String product_no) {
+		return mapper.sumreview(product_no);
+	}
+	
+	@Override
+	public double getscoreavg(String product_no) {
+	      log.info("되는거여 안되는거여..................");
+	    return mapper.getscoreavg(product_no);   
+	}
 }

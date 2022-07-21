@@ -22,4 +22,6 @@ public class ReplyVO {
 	
 	private Date updatedate;
 	
+	private double scoreavg;
+	
 }
