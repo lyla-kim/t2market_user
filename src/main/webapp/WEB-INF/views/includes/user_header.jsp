@@ -44,18 +44,35 @@
                  <div class="col-lg-5">
                                          <div class="header__top__right">
                             <div class="header__top__right__social">
-                               <a href="#"><i class="fa fa-se"><span style="color:green">회원가입</span></i> </a>
+                               <a href="/member/join"><i class="fa fa-se"><span style="color:green">회원가입</span></i> </a>
                             </div>
                             <div class="header__top__right__language">
                                 <div>고객센터</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">공지사항</a></li>
-                                    
+                                    <li><a href="/notice/list">공지사항</a></li>
+                                    <li><a href="/qna/list">1:1상담</a></li>          
                                 </ul>
                             </div>
+                            	<!-- 로그인 하지 않은 상태 -->
                             <div class="header__top__right__auth">
-                                <a href="#">로그인</a>
+                                <c:if test = "${member == null }">
+                    			<div class="login_button"><a href="/member/login">로그인</a></div>
+                    			<span><a href="/member/join">회원가입</a></span>                
+                				</c:if>  
+                				
+                				<!-- 로그인 한 상태 -->
+                			<div class="header__top__right__auth">
+                                <c:if test="${ member != null }">
+				                    <div class="login_success_area">
+				                        <span>회원 : ${member.member_name}</span>
+				                        <a href="/member/logout.do">로그아웃</a>
+				                    </div>
+				                </c:if>
+				                
+                            </div>
+                        </div>
+                        
                                 
                             </div>
                         </div>
@@ -94,7 +111,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>                                   
                                 </ul>
                                 
-                                <li><a href="#"><i class="fa fa-shopping-bag w-100 h-100" ></i></a></li>
+                   			    <li><a href="/cart/${member.member_id }"><i class="fa fa-shopping-bag w-100 h-100" ></i></a></li>
 							
                         </ul>
                     </nav>
@@ -102,8 +119,7 @@
                 <div class="col-lg-3">
                 <div id="wrap align-self-stretch">
    <form id='searchForm' action="/product/list" method='get'> 
-      <input  type='text' name='keyword' placeholder="찾으시는 제품명을 입력해주세요" value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
-
+		<input id="search" name="search keyword" type="text" placeholder="찾으시는 제품명을 입력해주세요" value='<c:out value="${pageMaker.cri.keyword}"/>'/>
       <input  type='hidden' name='type' value='T' />
       <input id="search_submit" value="Rechercher" type="submit">
       
