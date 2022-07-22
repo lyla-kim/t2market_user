@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace = "kr.co.T2Market.product.mapper.ProductMapper">
+  
+  <select id="getList" resultType="kr.co.T2Market.product.domain.ProductVO">
+  <![CDATA[
+  select * from product
+  ]]>
+  </select>
+  
+  <insert id="insert">
+  	insert into product (product_no, code1, code2, explain, name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active)
+  	values(#{product_no},#{code1},#{code2},#{explain},#{name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
+  </insert>
+  
+  <select id="read" resultType="kr.co.T2Market.product.domain.ProductVO">
+  	select * from product where product_no = #{product_no}
+  </select>
+  
+  <delete id="delete">
+  	delete from product where product_no = #{product_no}
+  </delete>
+  
+  <update id="update">
+  	update product
+  	set product_no= #{product_no},
+  	code1=#{code1},
+  	code2=#{code2},
+  	explain=#{explain},
+  	name=#{name},
+  	sell_price=#{sell_price},
+  	real_price=#{real_price},
+  	total_output=#{total_output},
+  	total_sales=#{total_sales},
+  	input=#{input},
+  	stock=#{stock},
+  	updatedate=sysdate, 
+  	active=#{active}
+  	where product_no=#{product_no}
+  </update>
+
+  </mapper>

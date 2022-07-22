@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.T2Market.mapper.QnaMapper">
+	
+	<select id="getList" resultType="kr.co.T2Market.domain.QnaVO">
+	<![CDATA[
+		select * from qna_user where qna_no > 0
+	]]>
+	</select>
+	
+	<insert id="insert">
+		insert into qna_user (qna_no, member_id, title, content)
+		values (SEQ_QNA.nextval, #{member_id}, #{title}, #{content})
+	</insert>
+	
+	<insert id="insertSelectKey">
+		
+		<selectKey keyProperty="qna_no" order="BEFORE" resultType="String">
+			select seq_qna.nextval from dual
+		</selectKey>
+		
+		insert into qna_user(qna_no, member_id, title, content)
+		values (#{qna_no}, #{member_id}, #{title}, #{content})		
+	</insert>
+	
+	<select id="read" resultType="kr.co.T2Market.domain.QnaVO">
+		select * from qna_user where qna_no = #{qna_no}
+	</select>
+	
+	<delete id="delete">
+		delete from qna_user where qna_no = #{qna_no} 
+	</delete>
+	
+	<update id="update">
+		update qna_user
+		set title = #{title},
+		content = #{content},
+		updateDate = sysdate
+		where qna_no = #{qna_no}
+	</update>
+	
+	<select id="getListWithPaging" resultType="kr.co.T2Market.domain.QnaVO">
+		<![CDATA[
+			select
+				qna_no, title, content, member_id, regdate, updatedate
+				
+				from
+					(
+					select rownum rn, qna_no, title, content, member_id, regdate, updatedate
+					from qna_user
+					where rownum <= #{pageNum} * #{amount}
+					)
+					where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from qna_user where qna_no > 0
+	</select>
+	
+	
+</mapper>

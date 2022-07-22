@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.T2Market.mapper.NoticeMapper">
+	
+	<select id="getList" resultType="kr.co.T2Market.domain.NoticeVO">
+	<![CDATA[
+		select * from Notice where notice_no > 0
+	]]>
+	</select>
+	
+	<insert id="insert">
+		insert into notice (notice_no, title, content, admin_id)
+		values (SEQ_NOTICE.nextval, #{title}, #{content}, #{admin_id})
+	</insert>
+	
+	<insert id="insertSelectKey">
+		
+		<selectKey keyProperty="notice_no" order="BEFORE" resultType="String">
+			select seq_notice.nextval from dual
+		</selectKey>
+		
+		insert into notice(notice_no, title, content, admin_id)
+		values (#{notice_no}, #{title}, #{content}, #{admin_id})		
+	</insert>
+	
+	<select id="read" resultType="kr.co.T2Market.domain.NoticeVO">
+		select * from notice where notice_no = #{notice_no}
+	</select>
+	
+	<delete id="delete">
+		delete from notice where notice_no = #{notice_no} 
+	</delete>
+	
+	<update id="update">
+		update notice
+		set title = #{title},
+		content = #{content},
+		updateDate = sysdate
+		where notice_no = #{notice_no}
+	</update>
+	
+			
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.T2Market.mapper.OrderMapper">
+	
+	<select id="getGoodsInfo" resultType="kr.co.T2Market.domain.OrderPageItemDTO">
+	
+		select product_no , product_name, sell_Price, discount
+		from product where product_no = #{product_no}
+		
+	</select>
+	
+	<select id="getOrderInfo" resultType="kr.co.T2Market.domain.OrderItemDTO">
+	
+		select product_no, sell_price, sales
+		from product where product_no = #{product_no}
+	
+	</select>
+	
+</mapper>
