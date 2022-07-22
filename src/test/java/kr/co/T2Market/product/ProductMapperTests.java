@@ -61,27 +61,27 @@ public class ProductMapperTests {
 //		log.info("DELETE COUNT : " + mapper.delete("1"));
 //	}
 	
-	@Test
-	public void testUpdate() {
-		
-		ProductVO product = new ProductVO();
-		
-		product.setProduct_no("111");
-		product.setCode1("10000");
-		product.setCode2("10100");
-		product.setExplain("상품설명Test2");
-		product.setName("상품이름");
-		product.setDiscount(20);
-		product.setSell_price(200);
-		product.setReal_price(300);
-		product.setTotal_output(300);
-		product.setTotal_sales(300);
-		product.setInput(30);
-		product.setStock(30);
-		product.setActive("N");
-		
-		int count = mapper.update(product);
-		log.info("Update Count : " + count);
-		
-	}
+//	@Test
+//	public void testUpdate() {
+//		
+//		ProductVO product = new ProductVO();
+//		
+//		product.setProduct_no("111");
+//		product.setCode1("10000");
+//		product.setCode2("10100");
+//		product.setExplain("상품설명Test2");
+//		product.setName("상품이름");
+//		product.setDiscount(20);
+//		product.setSell_price(200);
+//		product.setReal_price(300);
+//		product.setTotal_output(300);
+//		product.setTotal_sales(300);
+//		product.setInput(30);
+//		product.setStock(30);
+//		product.setActive("N");
+//		
+//		int count = mapper.update(product);
+//		log.info("Update Count : " + count);
+//		
+//	}
 }

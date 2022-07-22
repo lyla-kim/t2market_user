@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.T2Market.domain.CartDTO;
+import kr.co.T2Market.domain.MemberVO;
 import kr.co.T2Market.service.CartService;
 
 @Controller
@@ -24,6 +25,9 @@ public class CartController {
 	@ResponseBody
 	public String addCartPOST(CartDTO cart, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+			
 		//카트 등록
 		
 		int result = cartService.addCart(cart);

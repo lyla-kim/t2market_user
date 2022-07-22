@@ -6,7 +6,7 @@
 	
 	<select id="getList" resultType="kr.co.T2Market.domain.NoticeVO">
 	<![CDATA[
-		select * from Notice where notice_no > 0
+		select * from Notice where notice_no > 0 and active = 'Y'
 	]]>
 	</select>
 	
