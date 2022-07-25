@@ -4,44 +4,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace = "kr.co.T2Market.mapper.ProductMapper">
  
-	<sql id="criteria">
-		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
-			<foreach item="type" collection="typeArr">
-				<trim prefix="OR">
-					<choose>
-						<when test="type=='T'.toString()">
-							name like '%'||#{keyword}||'%'
-						</when>					
-						<when test="type=='C'.toString()">
-							code_no like '%'||#{keyword}||'%'
-						</when>												
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql>
-	
-	<select id="getListPaging" resultType="kr.co.T2Market.domain.ProductVO">
-		<![CDATA[
-			select 
-			    *
-		    from 
-		      (
-			      select /*+INDEX_DESC(product pk_product) */
-			        rownum rn, product_no, name, code_no, explain,real_price, regdate, active 
-			      from 
-			        product
-			      where 
-		 ]]>  
-			      
-			<include refid="criteria"></include>
-			
-		<![CDATA[	      
-			      rownum <= #{pageNum} * #{amount}
-			   )
-			 where rn > (#{pageNum} -1) * #{amount}
-		]]>
-	</select>
+   <sql id="criteria">
+      <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+         <foreach item="type" collection="typeArr">
+            <trim prefix="OR">
+               <choose>
+                  <when test="type=='T'.toString()">
+                     product_name like '%'||#{keyword}||'%'
+                  </when>               
+                  <when test="type=='C'.toString()">
+                     code_no like '%'||#{keyword}||'%'
+                  </when>                                    
+               </choose>
+            </trim>
+         </foreach>
+      </trim>
+   </sql>
+   
+   <select id="getListPaging" resultType="kr.co.T2Market.domain.ProductVO">
+      <![CDATA[
+         select 
+             *
+          from 
+            (
+               select /*+INDEX_DESC(product pk_product) */
+                 rownum rn, product_no, product_name, code_no, explain,real_price, regdate, active 
+               from 
+                 product
+               where 
+       ]]>  
+               
+         <include refid="criteria"></include>
+         
+      <![CDATA[         
+               rownum <= #{pageNum} * #{amount}
+            )
+          where rn > (#{pageNum} -1) * #{amount}
+      ]]>
+   </select>
     
         <!-- 게시물 총 개숫 -->
     <select id="getTotal" resultType="int">
@@ -50,7 +50,7 @@
         
         <if test="keyword != null">        
             <!-- Oracle -->
-            where name like '%'||#{keyword}||'%'
+            where product_name like '%'||#{keyword}||'%'
             
         </if>
     
@@ -58,20 +58,20 @@
 
   
   <insert id="insert">
-  	insert into product (product_no, code_no, explain, name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active)
-  	values(#{product_no},#{code_no},#{explain},#{name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
+     insert into product (product_no, code_no, explain, product_name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active)
+     values(#{product_no},#{code_no},#{explain},#{product_name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
   </insert>
   
   <select id="getPage" resultType="kr.co.T2Market.domain.ProductVO">
-  	select product_no, name, explain, code_no, real_price from product where product_no = #{product_no}
+     select product_no, product_name, explain, code_no, real_price from product where product_no = #{product_no}
   </select>
   
-  	<select id="getProductIdName" resultType="kr.co.T2Market.domain.ProductVO">
-	
-		select Product_no, name from product 
-		where product_no = #{product_no}
-	
-	
-	</select>
+     <select id="getProductIdName" resultType="kr.co.T2Market.domain.ProductVO">
+   
+      select Product_no, product_name from product 
+      where product_no = #{product_no}
+   
+   
+   </select>
 
   </mapper>

@@ -13,7 +13,7 @@
   	<insert id="writeReply" parameterType="kr.co.T2Market.domain.ReplyVO">
   	
   		insert into review (review_no, product_no, member_id, reply, score,reviewAvg, regdate, updatedate) 
-  		values(rev_seq.nextval, #{product_no}, 'TEST', #{reply}, #{score}, (select AVG(score) from review), sysdate, sysdate)
+  		values(rev_seq.nextval, #{product_no}, 'tg', #{reply}, #{score}, (select AVG(score) from review), sysdate, sysdate)
   
   	</insert>
   	

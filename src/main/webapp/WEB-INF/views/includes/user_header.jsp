@@ -58,7 +58,6 @@
                             <div class="header__top__right__auth">
                                 <c:if test = "${member == null }">
                     			<div class="login_button"><a href="/member/login">로그인</a></div>
-                    			<span><a href="/member/join">회원가입</a></span>                
                 				</c:if>  
                 				
                 				<!-- 로그인 한 상태 -->
@@ -119,7 +118,7 @@
                 <div class="col-lg-3">
                 <div id="wrap align-self-stretch">
    <form id='searchForm' action="/product/list" method='get'> 
-		<input id="search" name="search keyword" type="text" placeholder="찾으시는 제품명을 입력해주세요" value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+		<input id="search" name="keyword" type="text" placeholder="찾으시는 제품명을 입력해주세요" value='<c:out value="${pageMaker.cri.keyword}"/>'/>
       <input  type='hidden' name='type' value='T' />
       <input id="search_submit" value="Rechercher" type="submit">
       

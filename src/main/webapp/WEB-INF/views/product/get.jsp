@@ -58,7 +58,7 @@
                 </div>               
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3><c:out value="${pageInfo.name}"/></h3>                       
+                        <h3><c:out value="${pageInfo.product_name}"/></h3>                       
                         <div class="product__details__price"><c:out value="${pageInfo.real_price}"/>원</div>
                         <p><span style="font-size:25px">평균 평점 : <%= request.getAttribute("avg") %></span></p>
                         <p><c:out value="${pageInfo.explain}"/></p> 

@@ -10,7 +10,7 @@ public class ProductVO {
 	private String code1;
 	private String code2;
 	private String explain;
-	private String name;
+	private String product_name;
 	private int discount;
 	private int sell_price;
 	private int real_price;

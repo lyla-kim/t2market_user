@@ -37,7 +37,7 @@
 							<div class="form-group pw_wrap">
 								<div class="pw_name">비밀번호</div>
 								<div class="pw_input_box">
-								<input class="form-control pw_input" name="pass">
+								<input class="form-control pw_input" name="pass" type="password">
 							</div>
 						</div> 
 						
