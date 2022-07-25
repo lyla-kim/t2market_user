@@ -13,11 +13,8 @@
 							name like '%'||#{keyword}||'%'
 						</when>					
 						<when test="type=='C'.toString()">
-							code1 like '%'||#{keyword}||'%'
-						</when>	
-						<when test="type=='W'.toString()">
-							code2 like '%'||#{keyword}||'%'
-						</when>								
+							code_no like '%'||#{keyword}||'%'
+						</when>												
 					</choose>
 				</trim>
 			</foreach>
@@ -31,7 +28,7 @@
 		    from 
 		      (
 			      select /*+INDEX_DESC(product pk_product) */
-			        rownum rn, product_no, name, code1, code2, explain,real_price, regdate, active 
+			        rownum rn, product_no, name, code_no, explain,real_price, regdate, active 
 			      from 
 			        product
 			      where 
@@ -61,12 +58,12 @@
 
   
   <insert id="insert">
-  	insert into product (product_no, code1, code2, explain, name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active)
-  	values(#{product_no},#{code1},#{code2},#{explain},#{name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
+  	insert into product (product_no, code_no, explain, name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active)
+  	values(#{product_no},#{code_no},#{explain},#{name},#{discount},#{sell_price},#{real_price},#{total_output},#{total_sales},#{input},#{stock},sysdate,sysdate,#{active})
   </insert>
   
   <select id="getPage" resultType="kr.co.T2Market.domain.ProductVO">
-  	select product_no, name, explain, code1, code2, real_price from product where product_no = #{product_no}
+  	select product_no, name, explain, code_no, real_price from product where product_no = #{product_no}
   </select>
   
   	<select id="getProductIdName" resultType="kr.co.T2Market.domain.ProductVO">
