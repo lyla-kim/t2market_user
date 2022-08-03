@@ -15,7 +15,7 @@ public class CartDTO {
 	private int sell_price;
 	private int discount;
 	
-	//할인율 계산
+	//할인율 계산 
 	private int real_price;
 	private int total_sales;
 	
