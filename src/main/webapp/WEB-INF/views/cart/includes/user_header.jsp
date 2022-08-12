@@ -56,7 +56,6 @@
                             <div class="header__top__right__auth">
                                 <c:if test = "${member == null }">
                     			<div class="login_button"><a href="/member/login">로그인</a></div>
-                    			<span><a href="/member/join">회원가입</a></span>                
                 				</c:if>  
                 				
                 				<!-- 로그인 한 상태 -->

@@ -1,0 +1,84 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.co.T2Market.mapper.ReplyMapper">
+ 
+ 	<!-- 댓글 조회 -->
+   	<select id="read" resultType="kr.co.T2Market.domain.ReplyVO">
+  	
+  		select * from review where review_no = #{review_no}
+  	</select>
+ 
+  	<!-- 댓글등록 -->
+  	<insert id="writeReply" parameterType="kr.co.T2Market.domain.ReplyVO">
+  	
+  		insert into review (review_no, product_no, member_id, reply, score,reviewAvg, regdate, updatedate) 
+  		values(rev_seq.nextval, #{product_no}, 'tg', #{reply}, #{score}, (select AVG(score) from review), sysdate, sysdate)
+  
+  	</insert>
+  	
+  	          <!-- 게시물 총 개숫 -->
+    <select id="gettotalr" resultType="int">
+    
+        select count(*) from review
+        
+        <if test="keyword != null">        
+            <!-- Oracle -->
+            where product_no like '%'||#{product_no}||'%'
+            
+        </if>
+    
+    </select>	
+  	<!-- 댓글 수정 -->
+  	<update id ="update" parameterType="kr.co.T2Market.domain.ReplyVO">
+  	
+  		update review set 
+  		reply = #{reply}, 
+  		updatedate = sysdate
+  		where review_no = #{review_no}
+  	</update>  	
+
+
+  	
+  	<delete id ="delete" parameterType="kr.co.T2Market.domain.ReplyVO">
+  	
+  		delete from review where review_no = #{review_no}
+  		
+  		
+  	</delete>
+  	
+  	<select id="getListWithPaging" resultType="kr.co.T2Market.domain.ReplyVO">
+  		select * 
+  		from review
+  		where product_no = #{product_no}
+  		order by updatedate desc
+  	
+  	</select>
+  	
+  	<select id="selectCount" resultType="kr.co.T2Market.domain.ReplyVO">
+  	select count(*) from review
+	
+  	</select>
+  	
+ 	<select id="sumreview" resultType="kr.co.T2Market.domain.ReplyVO">
+  	select sum(score) from review
+	
+  	</select>
+  	
+  	<select id="getscoreavg" resultType="double">
+     
+        select avg(score)
+        from review
+        where product_no = #{product_no}
+     
+     </select>
+
+	<update id="updatescoreavg">
+   
+      update review
+      set scoreavg = #{scoreavg}
+      where product_no = #{product_no}
+   
+   </update>
+
+  </mapper>

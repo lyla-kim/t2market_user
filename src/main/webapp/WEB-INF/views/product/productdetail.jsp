@@ -29,10 +29,10 @@
                                 src="/resources/img/product/details/thumb-4.jpg" alt="">
                         </div>
                     </div>
-                </div>
+                </div>               
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>상품의 이름이 보여지는 곳</h3>                       
+                        <h3>제품명</h3>                       
                         <div class="product__details__price">이 제품의 가격은?</div>
                         <p>제품 상세 정보</p>
                         <div class="product__details__quantity">

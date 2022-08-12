@@ -114,7 +114,7 @@
 <form action="/cart/update" method="post" class="quantity_update_form">
 				<input type="hidden" name="cart_no" class="update_cart_no">
 				<input type="hidden" name="sales" class="update_sales">
-				<input type="hidden" name="member_id" value="${ci.member_id}">
+				<input type="hidden" name="member_id" value="${member.member_id}">
 			</form>
 			
 
@@ -122,7 +122,7 @@
 
 	<form action="/cart/delete" method="post" class="quantity_delete_form">
 				<input type="hidden" name="cart_no" class="delete_cart_no">
-				<input type="hidden" name="member_id" value="${ci.member_id}">
+				<input type="hidden" name="member_id" value="${member.member_id}">
 			</form>
 			
 <!--  주문 form --> 
